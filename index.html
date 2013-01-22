@@ -48,26 +48,22 @@
 				$("#new_project_tab").tab('show');
 			}
 		var users =[];
-		var button = document.getElementById("submit_user");
+		<!--var button = document.getElementById("submit_user");-->
+		var button = $('#submit_user')
 		
 		<!-- console.log(button); -->
-		console.log(button);
 		
-		function addUserToArray() {
-			console.log("Called");
-			var user_name = document.getElementById("user_name");
-			var user_email = document.getElementById("user_email");
-			var user_phone = document.getElementById("user_phone");
-			var user_password = document.getElementById("user_password");
+		
+		$('#submit_user').click(function () {
 			var user = {
-				name : user_name.value,
-				email : user_email.value,
-				phone : user_phone.value,
-				password : user_password.value
+				name : $('#user_name').val(),
+				email : $('#user_email').val(),
+				phone : $('#user_phone').val(),
+				password : $('#user_password').val()
 			}
 			users.push(user);
-		}
-		button.addEventListener("click", addUserToArray, false);
+		})
+	
 		
 		</script>
 		
