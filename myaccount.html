@@ -56,32 +56,14 @@
 
 		
 		<script type="text/javascript">
-			$('#user_signup_link').click(function (e){
+			$('#existing_project_tab').click(function (e){
 				e.preventDefault();
-				$("#user_signup_tab").tab('show');
+				$("#existing_project_tab").tab('show');
 			})
 			$('#new_project_link').click(function (e){
 				e.preventDefault();
 				$("#new_project_tab").tab('show');
 			})
-		var users =[];
-		<!--var button = document.getElementById("submit_user");-->
-		var button = $('#submit_user')
-		
-		<!-- console.log(button); -->
-		
-		
-		$('#submit_user').click(function () {
-			var user = {
-				name : $('#user_name').val(),
-				email : $('#user_email').val(),
-				phone : $('#user_phone').val(),
-				password : $('#user_password').val()
-			}
-			users.push(user);
-		})
-	
-		
 		</script>
 		
 	</body>

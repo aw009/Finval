@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<h1>FinVal Signup</h1>
+		
+		<form action="" method="POST">
+			<label for="user_name">User Name: </label><input name="user_name" id="user_name"><br>
+			<label for="user_email">User Email: </label><input name="user_email" id="user_email" ><br>
+			<label for="user_phone">User Phone: </label><input name="user_phone" id="user_phone" ><br>
+			<label for="user_password">User Password: </label><input name="user_password" id="user_password" >		
+			<!--<input type="submit">-->
+		</form>
+		<button name="submit" id="submit_user">Submit</button>		
+		
+		<script type="text/javascript">
+			
+		var users =[];
+		<!--var button = document.getElementById("submit_user");-->
+		var button = $('#submit_user')		
+		<!-- console.log(button); -->
+				
+		$('#submit_user').click(function () {
+			var user = {
+				name : $('#user_name').val(),
+				email : $('#user_email').val(),
+				phone : $('#user_phone').val(),
+				password : $('#user_password').val()
+			}
+			users.push(user);
+		})
+		</script>	
+	</body>
+
+</html>
