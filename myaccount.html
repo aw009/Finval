@@ -111,21 +111,6 @@
 				e.preventDefault();
 				$("#collaboration_tab").tab('show');
 			})
-			
-			var projects =[];
-			<!--var button = document.getElementById("submit_user");-->
-			var button_project = $('#submit_project')		
-			<!-- console.log(button); -->
-					
-			$('#submit_project').click(function () {
-				var project = {
-					id : $('#project_name').val(),
-					name : $('#project_id').val(),
-					date : $('#project_date').val(),
-					rights : $('#project_rights').val()
-				}
-				users.push(user);
-			})
 		
 			$('#submit_project').click(function () {
 				$('#new_project_header').submit();
