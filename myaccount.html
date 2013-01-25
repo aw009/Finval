@@ -10,7 +10,7 @@
 		
 		<a href="myaccount.html">Log In</a>	
 		<a href="signup.html">Sign Up</a>
-		
+		<div id="greet_user"></div>
 		<ul class="nav nav-tabs">
 			<li><a href="#method_1_tab" id="method_1_link" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
 			<li><a href="#method_2_tab" id="method_2_link" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
@@ -97,7 +97,27 @@
 					risk_free_rate : $('#risk_free_rate').val()
 				}
 				inputs.push(input);
-			})	
+			})
+
+			function parseURLIntoObject (url) {
+				var retObj = {};
+				data = url.split("&")
+				for (var i = 0; i < data.length; i++) {
+					keyVal = data[i].split("="); // ["?user_name", "Icyfenix"]
+					//our array has a length of 2.
+					if (i == 0) {
+						keyVal[0] = keyVal[0].replace("?", "");
+					}
+					retObj[keyVal[0]] = decodeURI(keyVal[1]);
+				};
+
+				return retObj;
+			}	
+			var form_data = parseURLIntoObject(window.location.search);	
+			$('#greet_user').html("Hello, " + form_data.user_name);
+			if(typeof user== 'undefined'){
+			$('body').html('Please log in');
+			}
 		</script>
 		
 	</body>
