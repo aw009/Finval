@@ -11,8 +11,8 @@
 		  <div class="navbar-inner">
 			<a class="brand" href="#">FinVal</a>
 			<div class="nav pull-right">
-			 <a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">My Account</a>
-			 <a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">New Account</a>
+			 <a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+			 <a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
 			</div>
 		  </div>
 		</div>
@@ -26,7 +26,9 @@
 
 				<div class="tab-content" >
 					<div class="tab-pane fade active" id="home_image">
-						<img src="home_image.jpg">				
+						<div class="span8">
+							<img src="home_image.jpg" width="100%">	
+						</div>
 					</div>
 					
 					<div class="tab-pane fade hide" id="how_it_works_tab">
@@ -39,7 +41,9 @@
 				</div>			
 			</div>
 		</div>
-			
+		
+		<input type="text" data-provide="typeahead" id="project_type">
+		
 		<!-- Modal -->
 		<div id="sign_up_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-header">
@@ -82,7 +86,8 @@
 			$('#sign_up_form').submit();
 		})
 	
-		
+		var project_type=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
+		$('#project_type').typeahead({source: project_type});
 		</script>
 		
 	</body>
