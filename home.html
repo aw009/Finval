@@ -16,7 +16,9 @@
 			</div>
 		  </div>
 		</div>
-	
+		<div>
+		<h1><input type="text" data-provide="typeahead" id="project_type">Search</h1>
+		</div>
 		<div class="row-fluid">
 			<div class="span10 offset2">
 				<ul class="nav nav-tabs">
@@ -41,8 +43,6 @@
 				</div>			
 			</div>
 		</div>
-		
-		<input type="text" data-provide="typeahead" id="project_type">
 		
 		<!-- Modal -->
 		<div id="sign_up_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -79,8 +79,7 @@
 		<!--var button = document.getElementById("submit_user");-->
 		var button = $('#submit_user')
 		
-		<!-- console.log(button); -->
-		
+		<!-- console.log(button); -->		
 		
 		$('#submit_user').click(function () {
 			$('#sign_up_form').submit();

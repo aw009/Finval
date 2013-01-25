@@ -6,69 +6,112 @@
 	</head>
 
 	<body>
-		<h1>Project</h1>
+	
+		<div class="navbar">
+		  <div class="navbar-inner">
+			<a class="brand" href="#">FinVal</a>
+			<div class="nav pull-right">
+			 <a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+			 <a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+			</div>
+		  </div>
+		</div>
 		
-		<a href="myaccount.html">Log In</a>	
-		<a href="signup.html">Sign Up</a>
-		<div id="greet_user"></div>
+		<div class="page-header">
+			<h1>Beautiful models <small>At your finger tips</small></h1>
+		</div>
+		
 		<ul class="nav nav-tabs">
-			<li><a href="#method_1_tab" id="method_1_link" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
-			<li><a href="#method_2_tab" id="method_2_link" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
-			<li><a href="#method_3_tab" id="method_3_link" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
+			<li><a href="#existing_project_tab" id="existing_project_tab" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
+			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<li><a href="#collaboration_tab" id="collaboration_tab" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
 		</ul>
 		
-			<div class="tab-content row-fluid" >
-				<div class="tab-pane fade hide" id="method_1_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8 table-bordered table-hover">
-						<tr>
-							<th class="span2 pagination-centered">Inputs</th>
-							<th class="span2">Calculations</th>
-							<th class="span2">Results</th>
-							<th class="span2">Notes</th>
-						</tr>
-					</table>				
-				</div>
-			
-				<div class="tab-pane fade hide" id="method_2_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8">
-						<tr>
-							<th>Inputs</th>
-							<th>Calculations</th>
-							<th>Results</th>
-							<th>Notes</th>
-						</tr>
+			<div class="tab-content" >
+				<div class="tab-pane fade" id="existing_project_tab">
+					<table>
+					<tr>
+						<th>Project ID</th>
+						<th>Project Name</th>
+						<th>Project Date</th>
+						<th>Project Rights</th>
+					</tr>
+					<tr>
+						<td>0001</td>
+						<td>Harley Earnout</td>
+						<td>12/31/2011</td>
+						<td>Review</td>
+					</tr>
+					<tr>
+						<td>0003</td>
+						<td>Harley Earnout</td>
+						<td>12/31/2012</td>
+						<td>Modify</td>
+					</tr>
+					<tr>
+						<td>0002</td>
+						<td>Davison Convertible Bond</td>
+						<td>12/31/2012</td>
+						<td>View</td>
+					</tr>
 					</table>				
 				</div>
 				
-				<div class="tab-pane fade hide" id="method_3_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8">
-						<tr>
-							<th>Inputs</th>
-							<th>Calculations</th>
-							<th>Results</th>
-							<th>Notes</th>
-						</tr>
-					</table>
+				<!-- Modal -->
+				<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">New Project</h3>
+				  </div>
+				  <div class="modal-body">
+					<form action="project.html" method="GET" id="new_project_header">
+						<label for="project_id">Project ID: </label><input name="project_id" id="project_id"><br>
+						<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>
+						<label for="project_date">Project Date: </label><input name="project_date" id="project_date"><br>
+						<label for="project_rights">Project Rights: </label><input name="project_rights" id="project_rights"><br>						
+					</form>
+				  </div>
+				  <div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+					<button class="btn btn-primary" id="submit_project">Submit</button>
+				  </div>
+				</div>				
+				<div class="tab-pane fade" id="collaboration_tab">
+				<!-- want to make this a vertical tab-->
+					<ol>
+						<li>Internal</li>
+						<li>External </li>
+						<li>Request New</li>
+					</ol>
+					<tr>
+						<td>0004</td>
+						<td>Elton John</td>
+						<td>Project Pheonix</td>
+						<td>12/31/12</td>
+					</tr>
+					<tr>
+						<td>0005</td>
+						<td>Lady Gaga</td>
+						<td>Project Dragon</td>
+						<td>12/31/2012</td>
+					</tr>						
 				</div>			
 			</div>			
 				
 		<script type="text/javascript">
-			$('#method_1_link').click(function (e){
+			$('#existing_project_link').click(function (e){
 				e.preventDefault();
-				$("#method_1_tab").tab('show');
+				$("#existing_project_tab").tab('show');
 			})
-			$('#method_2_link').click(function (e){
+			$('#new_project_link').click(function (e){
 				e.preventDefault();
-				$("#method_2_tab").tab('show');
+				$("#new_project_tab").tab('show');
 			})
-			$('#method_3_link').click(function (e){
+			$('#collaboration_link').click(function (e){
 				e.preventDefault();
-				$("#method_3_tab").tab('show');
+				$("#collaboration_tab").tab('show');
 			})
-		
+			
 			var projects =[];
 			<!--var button = document.getElementById("submit_user");-->
 			var button_project = $('#submit_project')		
@@ -81,43 +124,12 @@
 					date : $('#project_date').val(),
 					rights : $('#project_rights').val()
 				}
-				inputs.push(input);
-			})		
-			
-			var inputs =[];
-			<!--var button = document.getElementById("submit_user");-->
-			var button_input = $('#submit_inputs')		
-			<!-- console.log(button); -->
-					
-			$('#submit_inputs').click(function () {
-				var input = {
-					valuation_date : $('#valuation_date').val(),
-					company_name : $('#company_name').val(),
-					time_period : $('#time_period').val(),
-					risk_free_rate : $('#risk_free_rate').val()
-				}
-				inputs.push(input);
+				users.push(user);
 			})
-
-			function parseURLIntoObject (url) {
-				var retObj = {};
-				data = url.split("&")
-				for (var i = 0; i < data.length; i++) {
-					keyVal = data[i].split("="); // ["?user_name", "Icyfenix"]
-					//our array has a length of 2.
-					if (i == 0) {
-						keyVal[0] = keyVal[0].replace("?", "");
-					}
-					retObj[keyVal[0]] = decodeURI(keyVal[1]);
-				};
-
-				return retObj;
-			}	
-			var form_data = parseURLIntoObject(window.location.search);	
-			$('#greet_user').html("Hello, " + form_data.user_name);
-			if(typeof form_data== 'undefined'){
-			$('body').html('Please log in');
-			}
+		
+			$('#submit_project').click(function () {
+				$('#new_project_header').submit();
+			})			
 		</script>
 		
 	</body>
