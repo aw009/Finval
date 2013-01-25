@@ -9,60 +9,33 @@
 		<h1>FinVal</h1>
 		
 		<a href="myaccount.html">My Account</a>	
-		<a href="signup.html">New User</a>
+		<a href="signup.html">New Account</a>
 		
 		<ul class="nav nav-tabs">
-			<li><a href="#existing_project_tab" id="existing_project_tab" data-toggle="tab">My Project <i class="icon-folder-close"></i></a></li>
-			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<li><a href="#how_it_works_tab" id="how_it_works_tab" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
+			<li><a href="#about_us_tab" id="about_us_tab" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
 		</ul>
 		
 			<div class="tab-content" >
-				<div class="tab-pane fade" id="existing_project_tab">
-					<table border="1">
-					<tr>
-						<th>Project ID</th>
-						<th>Project Name</th>
-						<th>Project Date</th>
-						<th>Project Right</th>
-					</tr>
-					<tr>
-						<td>0001</td>
-						<td>Harley CC Rev</td>
-						<td>12/31/2011</td>
-						<td>Review</td>
-					</tr>
-					<tr>
-						<td>0003</td>
-						<td>Harley CC Rev</td>
-						<td>12/31/2012</td>
-						<td>Modify</td>
-					</tr>
-					<tr>
-						<td>0002</td>
-						<td>Davison CC FDA</td>
-						<td>12/31/2011</td>
-						<td>View</td>
-					</tr>
-					</table>				
+				<div class="tab-pane fade" id="how_it_works_tab">
+					How it Works				
 				</div>
 			
-				<div class="tab-pane fade" id="new_project_tab">
-					<form action="" method="POST">
-						<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>	
-					</form>
+				<div class="tab-pane fade" id="about_us_tab">
+					About Us
 				</div>
 			</div>			
 		
 
 		
 		<script type="text/javascript">
-			$('#user_signup_link').click(function (e){
+			$('#how_it_works_tab').click(function (e){
 				e.preventDefault();
-				$("#user_signup_tab").tab('show');
+				$("#how_it_works_tab").tab('show');
 			})
-			$('#new_project_link').click(function (e){
+			$('#about_us_tab').click(function (e){
 				e.preventDefault();
-				$("#new_project_tab").tab('show');
+				$("#about_us_tab").tab('show');
 			})
 		var users =[];
 		<!--var button = document.getElementById("submit_user");-->

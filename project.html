@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<h1>FinVal</h1>
+		
+		<a href="myaccount.html">My Account</a>	
+		<a href="signup.html">New Account</a>
+		
+		<ul class="nav nav-tabs">
+			<li><a href="#existing_project_tab" id="existing_project_tab" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
+			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<li><a href="#collaboration_tab" id="collaboration_tab" data-toggle="tab">Create Project <i class="icon-heart"></i></a></li>
+		</ul>
+		
+			<div class="tab-content" >
+				<div class="tab-pane fade" id="existing_project_tab">
+					<table border="1">
+					<tr>
+						<th>Project ID</th>
+						<th>Project Name</th>
+						<th>Project Date</th>
+						<th>Project Rights</th>
+					</tr>
+					<tr>
+						<td>0001</td>
+						<td>Harley CC Rev</td>
+						<td>12/31/2011</td>
+						<td>Review</td>
+					</tr>
+					<tr>
+						<td>0003</td>
+						<td>Harley CC Rev</td>
+						<td>12/31/2012</td>
+						<td>Modify</td>
+					</tr>
+					<tr>
+						<td>0002</td>
+						<td>Davison CC FDA</td>
+						<td>12/31/2011</td>
+						<td>View</td>
+					</tr>
+					</table>				
+				</div>
+			
+				<div class="tab-pane fade" id="new_project_tab">
+					<form action="" method="POST">
+						<label for="project_id">Project ID: </label><input name="project_id" id="project_id"><br>
+						<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>
+						<label for="project_date">Project Date: </label><input name="project_date" id="project_date"><br>
+						<label for="project_rights">Project Rights: </label><input name="project_rights" id="project_rights"><br>						
+					</form>
+				</div>
+				
+				<div class="tab-pane fade" id="collaboration_tab">
+				<!-- want to make this a vertical tab-->
+					<ol>
+						<li>Internal</li>
+						<li>External </li>
+						<li>Request New</li>
+					</ol>
+				</div>			
+			</div>			
+				
+		<script type="text/javascript">
+			$('#existing_project_tab').click(function (e){
+				e.preventDefault();
+				$("#existing_project_tab").tab('show');
+			})
+			$('#new_project_link').click(function (e){
+				e.preventDefault();
+				$("#new_project_tab").tab('show');
+			})
+		
+			var projects =[];
+			<!--var button = document.getElementById("submit_user");-->
+			var button_project = $('#submit_project')		
+			<!-- console.log(button); -->
+					
+			$('#submit_project').click(function () {
+				var project = {
+					id : $('#project_name').val(),
+					name : $('#project_id').val(),
+					date : $('#project_date').val(),
+					rights : $('#project_rights').val()
+				}
+				users.push(user);
+			})		
+		</script>
+		
+	</body>
+
+</html>

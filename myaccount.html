@@ -6,55 +6,53 @@
 	</head>
 
 	<body>
-		<h1>FinVal</h1>
+		<h1>Project</h1>
 		
 		<a href="myaccount.html">My Account</a>	
-		<a href="signup.html">New User</a>
+		<a href="signup.html">New Account</a>
 		
 		<ul class="nav nav-tabs">
-			<li><a href="#existing_project_tab" id="existing_project_tab" data-toggle="tab">My Project <i class="icon-folder-close"></i></a></li>
-			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<li><a href="#method_1_tab" id="method_1_tab" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
+			<li><a href="#method_2_tab" id="method_2_tab" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
+			<li><a href="#method_3_tab" id="method_3_tab" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
 		</ul>
 		
 			<div class="tab-content" >
-				<div class="tab-pane fade" id="existing_project_tab">
+				<div class="tab-pane fade" id="method_1_tab">
+				<!-- want to make these tabs -->
 					<table border="1">
 					<tr>
-						<th>Project ID</th>
-						<th>Project Name</th>
-						<th>Project Date</th>
-						<th>Project Right</th>
-					</tr>
-					<tr>
-						<td>0001</td>
-						<td>Harley CC Rev</td>
-						<td>12/31/2011</td>
-						<td>Review</td>
-					</tr>
-					<tr>
-						<td>0003</td>
-						<td>Harley CC Rev</td>
-						<td>12/31/2012</td>
-						<td>Modify</td>
-					</tr>
-					<tr>
-						<td>0002</td>
-						<td>Davison CC FDA</td>
-						<td>12/31/2011</td>
-						<td>View</td>
+						<th>Inputs</th>
+						<th>Calculations</th>
+						<th>Results</th>
+						<th>Notes</th>
 					</tr>
 					</table>				
 				</div>
 			
-				<div class="tab-pane fade" id="new_project_tab">
-					<form action="" method="POST">
-						<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>	
-					</form>
+				<div class="tab-pane fade" id="method_2_tab">
+				<!-- want to make these tabs -->
+					<table border="1">
+					<tr>
+						<th>Inputs</th>
+						<th>Calculations</th>
+						<th>Results</th>
+						<th>Notes</th>
+					</tr>
 				</div>
+				
+				<div class="tab-pane fade" id="method_3_tab">
+				<!-- want to make these tabs -->
+					<table border="1">
+					<tr>
+						<th>Inputs</th>
+						<th>Calculations</th>
+						<th>Results</th>
+						<th>Notes</th>
+					</tr>
+				</div>			
 			</div>			
-		
-
-		
+				
 		<script type="text/javascript">
 			$('#existing_project_tab').click(function (e){
 				e.preventDefault();
@@ -64,6 +62,36 @@
 				e.preventDefault();
 				$("#new_project_tab").tab('show');
 			})
+		
+			var projects =[];
+			<!--var button = document.getElementById("submit_user");-->
+			var button_project = $('#submit_project')		
+			<!-- console.log(button); -->
+					
+			$('#submit_project').click(function () {
+				var project = {
+					id : $('#project_name').val(),
+					name : $('#project_id').val(),
+					date : $('#project_date').val(),
+					rights : $('#project_rights').val()
+				}
+				inputs.push(input);
+			})		
+			
+			var inputs =[];
+			<!--var button = document.getElementById("submit_user");-->
+			var button_input = $('#submit_inputs')		
+			<!-- console.log(button); -->
+					
+			$('#submit_inputs').click(function () {
+				var input = {
+					valuation_date : $('#valuation_date').val(),
+					company_name : $('#company_name').val(),
+					time_period : $('#time_period').val(),
+					risk_free_rate : $('#risk_free_rate').val()
+				}
+				inputs.push(input);
+			})	
 		</script>
 		
 	</body>
