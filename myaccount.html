@@ -115,7 +115,7 @@
 			}	
 			var form_data = parseURLIntoObject(window.location.search);	
 			$('#greet_user').html("Hello, " + form_data.user_name);
-			if(typeof user== 'undefined'){
+			if(typeof form_data== 'undefined'){
 			$('body').html('Please log in');
 			}
 		</script>
