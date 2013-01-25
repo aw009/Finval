@@ -12,55 +12,61 @@
 		<a href="signup.html">New Account</a>
 		
 		<ul class="nav nav-tabs">
-			<li><a href="#method_1_tab" id="method_1_tab" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
-			<li><a href="#method_2_tab" id="method_2_tab" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
-			<li><a href="#method_3_tab" id="method_3_tab" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
+			<li><a href="#method_1_tab" id="method_1_link" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
+			<li><a href="#method_2_tab" id="method_2_link" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
+			<li><a href="#method_3_tab" id="method_3_link" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
 		</ul>
 		
-			<div class="tab-content" >
-				<div class="tab-pane fade" id="method_1_tab">
+			<div class="tab-content row-fluid" >
+				<div class="tab-pane fade hide" id="method_1_tab">
 				<!-- want to make these tabs -->
-					<table border="1">
-					<tr>
-						<th>Inputs</th>
-						<th>Calculations</th>
-						<th>Results</th>
-						<th>Notes</th>
-					</tr>
+					<table class="table span8 table-bordered table-hover">
+						<tr>
+							<th>Inputs</th>
+							<th>Calculations</th>
+							<th>Results</th>
+							<th>Notes</th>
+						</tr>
 					</table>				
 				</div>
 			
-				<div class="tab-pane fade" id="method_2_tab">
+				<div class="tab-pane fade hide" id="method_2_tab">
 				<!-- want to make these tabs -->
-					<table border="1">
-					<tr>
-						<th>Inputs</th>
-						<th>Calculations</th>
-						<th>Results</th>
-						<th>Notes</th>
-					</tr>
+					<table class="table span8">
+						<tr>
+							<th>Inputs</th>
+							<th>Calculations</th>
+							<th>Results</th>
+							<th>Notes</th>
+						</tr>
+					</table>				
 				</div>
 				
-				<div class="tab-pane fade" id="method_3_tab">
+				<div class="tab-pane fade hide" id="method_3_tab">
 				<!-- want to make these tabs -->
-					<table border="1">
-					<tr>
-						<th>Inputs</th>
-						<th>Calculations</th>
-						<th>Results</th>
-						<th>Notes</th>
-					</tr>
+					<table class="table span8">
+						<tr>
+							<th>Inputs</th>
+							<th>Calculations</th>
+							<th>Results</th>
+							<th>Notes</th>
+						</tr>
+					</table>
 				</div>			
 			</div>			
 				
 		<script type="text/javascript">
-			$('#existing_project_tab').click(function (e){
+			$('#method_1_link').click(function (e){
 				e.preventDefault();
-				$("#existing_project_tab").tab('show');
+				$("#method_1_tab").tab('show');
 			})
-			$('#new_project_link').click(function (e){
+			$('#method_2_link').click(function (e){
 				e.preventDefault();
-				$("#new_project_tab").tab('show');
+				$("#method_2_tab").tab('show');
+			})
+			$('#method_3_link').click(function (e){
+				e.preventDefault();
+				$("#method_3_tab").tab('show');
 			})
 		
 			var projects =[];
