@@ -9,10 +9,11 @@
 	
 		<div class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">FinVal</a>
+				<a class="brand" href="home.html">FinVal</a>
 				<div class="nav pull-right">
-					<a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-					<a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+					<a class="btn btn-primary"  id = "log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+					<a class="btn btn-success"  id = "sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+					<a class="btn btn-success"  id = "account_info" role="button" href="accountinfo.html">My Account</a>					
 				</div>
 			</div>
 		</div>
@@ -132,6 +133,24 @@
 				return retObj;
 			}	
 			var form_data = parseURLIntoObject(window.location.search);	
+			if (form_data.user_name){
+				var user = {
+						name: form_data.user_name,
+						email: form_data.user_email,
+						phone: form_data.user_phone,
+						password: form_data.user_password
+					}
+			}
+				
+			if (user) {
+			//put code for changing page if logged in
+				$('#log_in').hide();
+				$('#sign_up').hide();				
+			} else {
+			//hide other button
+			
+			}
+			
 			$('#greet_user').html(form_data.user_name + " is crunching");
 			if (typeof form_data== 'undefined'){
 				$('body').html('Please log in');
