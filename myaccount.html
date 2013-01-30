@@ -8,13 +8,13 @@
 	<body>
 	
 		<div class="navbar">
-		  <div class="navbar-inner">
-			<a class="brand" href="#">FinVal</a>
-			<div class="nav pull-right">
-			 <a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-			 <a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+			<div class="navbar-inner">
+				<a class="brand" href="#">FinVal</a>
+				<div class="nav pull-right">
+					<a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+					<a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				</div>
 			</div>
-		  </div>
 		</div>
 		
 		<div class="page-header">
@@ -22,9 +22,9 @@
 		</div>
 		
 		<ul class="nav nav-tabs">
-			<li><a href="#existing_project_tab" id="existing_project_tab" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
+			<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
 			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
-			<li><a href="#collaboration_tab" id="collaboration_tab" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
+			<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
 		</ul>
 		
 			<div class="tab-content" >
@@ -100,6 +100,7 @@
 				
 		<script type="text/javascript">
 			$('#existing_project_link').click(function (e){
+				console.log('click');
 				e.preventDefault();
 				$("#existing_project_tab").tab('show');
 			})
