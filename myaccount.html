@@ -9,10 +9,13 @@
 	
 		<div class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">FinVal</a>
+				<a class="brand" href="home.html">FinVal</a>
+				<ul class="nav">
+					<li><a href="myaccount.html">My Projects</a></li>
+				</ul>
 				<div class="nav pull-right">
-					<a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-					<a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+					<a class="btn btn-primary" id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+					<a class="btn btn-success" id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
 				</div>
 			</div>
 		</div>
@@ -130,8 +133,33 @@
 				};
 
 				return retObj;
-			}	
-			var form_data = parseURLIntoObject(window.location.search);	
+			}
+			var form_data = parseURLIntoObject(window.location.search);
+			
+			$('a:not([data-toggle])').each(function () {
+				var newURL = $(this).attr('href') + window.location.search;
+				$(this).attr('href', newURL);
+			});
+
+			if (form_data.user_name) {
+				var user = {
+					name : form_data.user_name,
+					email : form_data.user_email,
+					phone : form_data.user_email,
+					password : form_data.user_email
+				};
+			}
+			
+			if (user) {
+				//Put all your code for changing the page if the user is logged in
+				$('#log_in').hide();
+				$('#sign_up').hide();
+			} else {
+				//user not logged in.
+
+			}
+			
+
 			$('#greet_user').html(form_data.user_name + " is crunching");
 			if (typeof form_data== 'undefined'){
 				$('body').html('Please log in');
