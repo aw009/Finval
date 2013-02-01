@@ -12,9 +12,9 @@
 			<div class="navbar-inner">
 				<a class="brand" href="home.html">FinVal</a>
 				<div class="nav pull-right">
-					<a class="btn btn-primary"  id = "log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-					<a class="btn btn-success"  id = "sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
-					<a class="btn btn-success"  id = "account_info" role="button" href="accountinfo.html">My Account</a>					
+					<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+					<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+					<a class="btn btn-success"  id="account_info" role="button" href="accountinfo.html">My Account</a>					
 				</div>
 			</div>
 		</div>
@@ -149,15 +149,17 @@
 
 				for (var i = projects.length - 1; i >= 0; i--) {
 					var table_string = '<tr id="tr_'+ projects[i].id +'">';
-						table_string += "<td>" + projects[i].id + "</td>";
+						table_string += '<td><a href="project_view.html?project_id=' + projects[i].id + '">'+ projects[i].id +'</a></td>';
 						table_string += "<td>" + projects[i].name + "</td>";
 						table_string += "<td>" + projects[i].dates[0].date.toDateString() + "</td>";
 						table_string += "<td>" + getRoleForUserOnProject(user.id, projects[i].id, User_Project_Roles) + "</td>";
 					table_string += "</tr>";
 
 					$('#existing_projects').append(table_string);
-					$('#tr_' + projects[i].id).click(function() {
+					$('#tr_' + projects[i].id).click({index : i, project: projects[i]},function(e) {
 						//now add another table row, or even another table inside of this row, or a modal, or whatever
+						var ourProject = e.data.project;
+
 
 					})	
 				};
