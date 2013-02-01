@@ -3,6 +3,7 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/projects.js"></script>
 	</head>
 
 	<body>
@@ -31,30 +32,12 @@
 		
 			<div class="tab-content" >
 				<div class="tab-pane fade" id="existing_project_tab">
-					<table>
+					<table id="existing_projects">
 					<tr>
 						<th>Project ID</th>
 						<th>Project Name</th>
 						<th>Project Date</th>
 						<th>Project Rights</th>
-					</tr>
-					<tr>
-						<td>0001</td>
-						<td>Harley Earnout</td>
-						<td>12/31/2011</td>
-						<td>Review</td>
-					</tr>
-					<tr>
-						<td>0003</td>
-						<td>Harley Earnout</td>
-						<td>12/31/2012</td>
-						<td>Modify</td>
-					</tr>
-					<tr>
-						<td>0002</td>
-						<td>Davison Convertible Bond</td>
-						<td>12/31/2012</td>
-						<td>View</td>
 					</tr>
 					</table>				
 				</div>
@@ -145,7 +128,8 @@
 					name : form_data.user_name,
 					email : form_data.user_email,
 					phone : form_data.user_email,
-					password : form_data.user_email
+					password : form_data.user_email,
+					id : 2
 				};
 			}
 			
@@ -153,16 +137,37 @@
 				//Put all your code for changing the page if the user is logged in
 				$('#log_in').hide();
 				$('#sign_up').hide();
+			
+			
+
+				$('#greet_user').html(form_data.user_name + " is crunching");
+				if (typeof form_data== 'undefined'){
+					$('body').html('Please log in');
+				}
+
+				//look in my user's projects
+
+				for (var i = projects.length - 1; i >= 0; i--) {
+					var table_string = '<tr id="tr_'+ projects[i].id +'">';
+						table_string += "<td>" + projects[i].id + "</td>";
+						table_string += "<td>" + projects[i].name + "</td>";
+						table_string += "<td>" + projects[i].dates[0].date.toDateString() + "</td>";
+						table_string += "<td>" + getRoleForUserOnProject(user.id, projects[i].id, User_Project_Roles) + "</td>";
+					table_string += "</tr>";
+
+					$('#existing_projects').append(table_string);
+					$('#tr_' + projects[i].id).click(function() {
+						//now add another table row, or even another table inside of this row, or a modal, or whatever
+
+					})	
+				};
+
 			} else {
 				//user not logged in.
 
 			}
-			
 
-			$('#greet_user').html(form_data.user_name + " is crunching");
-			if (typeof form_data== 'undefined'){
-				$('body').html('Please log in');
-			}
+
 		</script>
 		
 	</body>
