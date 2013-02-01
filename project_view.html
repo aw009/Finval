@@ -4,6 +4,8 @@
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+
 	</head>
 
 	<body>
@@ -20,12 +22,29 @@
 		</div>
 	<!-- Project Body -->
 
+		<h1 id="project_name">  </h1>
+
+		<h2> Summary </h2>
+		<h2> Input </h2>
+		<h2> Model </h2>
+		<h2> Report </h2>
 
 
 
 
 
 
+
+		<script> 
+			var form_data = parseURLIntoObject(window.location.search);
+			for (var i=0; i < projects.length ; i++){
+				if (projects[i].id==form_data.project_id) {
+					$('#project_name').html(projects[i].name)
+				}
+			}
+
+
+		</script>
 
 	</body>
 </html>

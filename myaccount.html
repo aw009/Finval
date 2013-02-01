@@ -4,6 +4,8 @@
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		
 	</head>
 
 	<body>
@@ -101,20 +103,7 @@
 				$('#new_project_header').submit();
 			});
 
-			function parseURLIntoObject (url) {
-				var retObj = {};
-				data = url.split("&")
-				for (var i = 0; i < data.length; i++) {
-					keyVal = data[i].split("="); // ["?user_name", "Icyfenix"]
-					//our array has a length of 2.
-					if (i == 0) {
-						keyVal[0] = keyVal[0].replace("?", "");
-					}
-					retObj[keyVal[0]] = decodeURI(keyVal[1]);
-				};
-
-				return retObj;
-			}
+			
 
 			var form_data = parseURLIntoObject(window.location.search);
 			
