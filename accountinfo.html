@@ -3,16 +3,99 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+
 	</head>
 
 	<body>
-		<h1>Account Info</h1>
-	
-	
-	
-	
-	
+	<!-- Nav Bar -->
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="home.html">FinVal</a>
+				<div class="nav pull-right">
+					<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+					<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+					<a class="btn btn-success"  id="account_info" role="button" href="accountinfo.html">My Account</a>					
+				</div>
+			</div>
+		</div>
+	<!-- Body -->
+
+		<!-- <h1 id="account_info"> My Account </h1> -->
+		<!-- Modal -->
+		<div id="account_info_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Account Info</h3>
+		  </div>
+		  <div class="modal-body">
+			<form action="project.html" method="GET" id="new_project_header">
+				<label for="project_id">Project ID: </label><input name="project_id" id="project_id"><br>
+				<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>
+				<label for="project_date">Project Date: </label><input name="project_date" id="project_date"><br>
+				<label for="project_rights">Project Rights: </label><input name="project_rights" id="project_rights"><br>						
+			</form>
+		  </div>
+		  <div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			<button class="btn btn-primary" id="submit_project">Submit</button>
+		  </div>
+		</div>				
+		<div class="tab-pane fade" id="collaboration_tab">
+		<!-- want to make this a vertical tab-->
+			<ol>
+				<li>Internal</li>
+				<li>External </li>
+				<li>Request New</li>
+			</ol>
+			<tr>
+				<td>0004</td>
+				<td>Elton John</td>
+				<td>Project Pheonix</td>
+				<td>12/31/12</td>
+			</tr>
+			<tr>
+				<td>0005</td>
+				<td>Lady Gaga</td>
+				<td>Project Dragon</td>
+				<td>12/31/2012</td>
+			</tr>						
+		</div>			
+			
+
+		<script> 
+
+			var form_data = parseURLIntoObject(window.location.search);
+			
+			$('a:not([data-toggle])').each(function () {
+				var newURL = $(this).attr('href') + window.location.search;
+				$(this).attr('href', newURL);
+			});
+
+			if (form_data.user_name) {
+				var user = {
+					name : form_data.user_name,
+					email : form_data.user_email,
+					phone : form_data.user_email,
+					password : form_data.user_email,
+					id : 2
+				};
+			}
+			
+			if (user) {
+				//Put all your code for changing the page if the user is logged in
+				$('#log_in').hide();
+				$('#sign_up').hide();
+			
+			
+
+				$('#greet_user').html('Welcome' + form_data.user_name);
+				if (typeof form_data== 'undefined'){
+					$('body').html('Please log in');
+				}
+
+		</script>
+
 	</body>
-	
 </html>
