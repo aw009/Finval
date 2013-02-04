@@ -37,21 +37,6 @@
 		// setter
 		$( ".selector" ).menu( "option", "menus", "div" );
 	
-		//http://css-tricks.com/generate-a-random-number/
-		//generate a random project id		
-		$("#getit").click(function() {   
-			var numLow = $("#lownumber").val();
-			var numHigh = $("#highnumber").val();			
-			var adjustedHigh = (parseFloat(numHigh) - parseFloat(numLow)) + 1;			
-			var numRand = Math.floor(Math.random()*adjustedHigh) + parseFloat(numLow);			
-			if ((IsNumeric(numLow)) && (IsNumeric(numHigh)) && (parseFloat(numLow) <= parseFloat(numHigh) && (numLow != '') && (numHigh != '')) {
-				$("#randomnumber").text(numRand);
-				} else {
-				$("#randomnumber").text("Careful now...");
-			}			
-			return false;
-		});
-	
 	</script>
 	
 	</body>
