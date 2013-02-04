@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		
+	</head>
+
+	<body>
+	<h1> New Project </h1>
+
+
+	<h2> Please select project type</h2>
+	<ul id="menu">
+		<li><a href="#">Stock</a></li>
+		<li><a href="#">Option</a></li>
+		<li><a href="#">Contingent Consideration</a>
+			<ul>
+				<li><a href="#">Revenue</a></li>
+				<li><a href="#">EBITDA</a></li>
+				<li><a href="#">Earning</a></li>
+				<li><a href="#">FDA</a></li>
+				<li><a href="#">Other</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Swap</a></li>
+		<li><a href="#">Bond</a></li>
+	</ul>
+	
+	<script>
+		// http://api.jqueryui.com/menu/
+		$( ".selector" ).menu({ menus: "div" });
+		// getter
+		var menus = $( ".selector" ).menu( "option", "menus" );		 
+		// setter
+		$( ".selector" ).menu( "option", "menus", "div" );
+	
+		//http://css-tricks.com/generate-a-random-number/
+		//generate a random project id		
+		$("#getit").click(function() {   
+			var numLow = $("#lownumber").val();
+			var numHigh = $("#highnumber").val();			
+			var adjustedHigh = (parseFloat(numHigh) - parseFloat(numLow)) + 1;			
+			var numRand = Math.floor(Math.random()*adjustedHigh) + parseFloat(numLow);			
+			if ((IsNumeric(numLow)) && (IsNumeric(numHigh)) && (parseFloat(numLow) <= parseFloat(numHigh) && (numLow != '') && (numHigh != '')) {
+				$("#randomnumber").text(numRand);
+				} else {
+				$("#randomnumber").text("Careful now...");
+			}			
+			return false;
+		});
+	
+	</script>
+	
+	</body>
+</html>

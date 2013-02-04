@@ -28,60 +28,69 @@
 		
 		<ul class="nav nav-tabs">
 			<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
-			<li><a href="#new_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<li><a href="#create_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
 			<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
 		</ul>
 		
 			<div class="tab-content" >
 				<div class="tab-pane fade" id="existing_project_tab">
 					<table id="existing_projects">
-					<tr>
-						<th>Project ID</th>
-						<th>Project Name</th>
-						<th>Project Date</th>
-						<th>Project Rights</th>
-					</tr>
+						<tr>
+							<th>Project ID</th>
+							<th>Project Name</th>
+							<th>Project Date</th>
+							<th>Project Rights</th>
+						</tr>
 					</table>				
 				</div>
-				
+			<div class="tab-content" >
+				<div class="tab-pane fade" id="create_project_tab">
+					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project</a>
+				</div>									
+			</div>				
 				<!-- Modal -->
 				<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h3 id="myModalLabel">New Project</h3>
-				  </div>
+				  </div>		
 				  <div class="modal-body">
-					<form action="project.html" method="GET" id="new_project_header">
-						<label for="project_id">Project ID: </label><input name="project_id" id="project_id"><br>
-						<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>
-						<label for="project_date">Project Date: </label><input name="project_date" id="project_date"><br>
-						<label for="project_rights">Project Rights: </label><input name="project_rights" id="project_rights"><br>						
+					<form action="newproject.html" method="GET" id="new_project_header">
+
+						<label for="new_project_id">Project ID: </label><input name="new_project_id" id="new_project_id"><br>
+						<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
+						<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
+						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>						
 					</form>
-				  </div>
+				  </div>				  
 				  <div class="modal-footer">
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-					<button class="btn btn-primary" id="submit_project">Submit</button>
+					<button class="btn btn-primary" id="submit_new_project">Submit</button>
 				  </div>
 				</div>				
+				
 				<div class="tab-pane fade" id="collaboration_tab">
 				<!-- want to make this a vertical tab-->
-					<ol>
-						<li>Internal</li>
-						<li>External </li>
-						<li>Request New</li>
-					</ol>
-					<tr>
-						<td>0004</td>
-						<td>Elton John</td>
-						<td>Project Pheonix</td>
-						<td>12/31/12</td>
-					</tr>
-					<tr>
-						<td>0005</td>
-						<td>Lady Gaga</td>
-						<td>Project Dragon</td>
-						<td>12/31/2012</td>
-					</tr>						
+					<table id="collaboration">
+						<tr>
+							<th>InternalProject</th>
+							<th>ExternalProject</th>
+							<th>Request New</th>
+						</tr>
+				
+						<tr>
+							<td>0004</td>
+							<td>Elton John</td>
+							<td>Project Pheonix</td>
+							<td>12/31/12</td>
+						</tr>
+						<tr>
+							<td>0005</td>
+							<td>Lady Gaga</td>
+							<td>Project Dragon</td>
+							<td>12/31/2012</td>
+						</tr>						
+					</table>			
 				</div>			
 			</div>			
 				
@@ -90,7 +99,7 @@
 				e.preventDefault();
 				$("#existing_project_tab").tab('show');
 			});
-			$('#new_project_link').click(function (e){
+			$('#create_project_link').click(function (e){
 				e.preventDefault();
 				$("#new_project_tab").tab('show');
 			});
@@ -98,11 +107,23 @@
 				e.preventDefault();
 				$("#collaboration_tab").tab('show');
 			});
-		
-			$('#submit_project').click(function () {
+			//http://css-tricks.com/generate-a-random-number/
+			//generate a random project id	
+			$('#submit_new_project').click(function () {
+				var numLow = 0;
+				var numHigh = 10000;			
+				var adjustedHigh = (parseFloat(numHigh) - parseFloat(numLow)) + 1;			
+				var numRand = Math.floor(Math.random()*adjustedHigh) + parseFloat(numLow);			
+				if ((IsNumeric(numLow)) && (IsNumeric(numHigh)) && (parseFloat(numLow) <= parseFloat(numHigh) && (numLow != '') && (numHigh != '')) {
+					$("#new_project_id").text(numRand);
+					} else {
+					$("#new_project_id").text("oops");
+				}			
+				return false;
+			});
+			$('#submit_new_project').click(function () {
 				$('#new_project_header').submit();
 			});
-
 			
 
 			var form_data = parseURLIntoObject(window.location.search);
@@ -158,7 +179,15 @@
 
 			}
 
-
+			$('#submit_user').click(function () {
+			$('#sign_up_form').submit();
+			})
+		
+			//search list
+			var project_type=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
+			$('#project_type').typeahead({source: project_type});
+			
+	
 		</script>
 		
 	</body>
