@@ -3,6 +3,11 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<style>
+		#search_text{
+		margin-right: auto
+		}
+		</style>
 	</head>
 
 	<body>
@@ -18,7 +23,7 @@
 		</div>
 		
 		<div>
-		<h3><input type="text" data-provide="typeahead" id="project_type">Search</h3>
+		<h3 id='search_text'><input type="text" data-provide="typeahead" id="derivative_type_search">Search</h3>
 		</div>
 		
 		<div class="row-fluid">
@@ -31,7 +36,7 @@
 				<div class="tab-content" >
 					<div class="tab-pane fade active" id="home_image">
 						<div class="span8">
-							<img src="home_image.jpg" width="100%">	
+							<img src="http://placekitten.com/500/300" width="100%">	
 						</div>
 					</div>
 					
@@ -87,8 +92,8 @@
 			$('#sign_up_form').submit();
 		})
 	
-		var project_type=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
-		$('#project_type').typeahead({source: project_type});
+		var derivative_type_search=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
+		$('#derivative_type_search').typeahead({source: derivative_type_search});
 		</script>
 		
 	</body>

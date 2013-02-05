@@ -9,14 +9,14 @@
 	</head>
 
 	<body>
-	<h1> New Project </h1>
+	<h1 id='title'> New Project </h1>
 
 
 	<h2> Please select project type</h2>
-	<ul id="menu">
-		<li><a href="#">Stock</a></li>
-		<li><a href="#">Option</a></li>
-		<li><a href="#">Contingent Consideration</a>
+	<select id='select_level_1)>
+		<option id='stocks'>Stock</option>
+		<option id='options'>Option</option>
+		<option id='contingent_onsiderations'>Contingent Consideration</option>
 			<ul>
 				<li><a href="#">Revenue</a></li>
 				<li><a href="#">EBITDA</a></li>
@@ -24,19 +24,87 @@
 				<li><a href="#">FDA</a></li>
 				<li><a href="#">Other</a></li>
 			</ul>
-		</li>
-		<li><a href="#">Swap</a></li>
-		<li><a href="#">Bond</a></li>
-	</ul>
+		<option id='swaps'>Swap</option>
+		<option id='bonds'>Bond</option>
+	</select>
 	
 	<script>
-		// http://api.jqueryui.com/menu/
-		$( ".selector" ).menu({ menus: "div" });
-		// getter
-		var menus = $( ".selector" ).menu( "option", "menus" );		 
-		// setter
-		$( ".selector" ).menu( "option", "menus", "div" );
 	
+		// display new project name
+		var form_data = parseURLIntoObject(window.location.search); //gets data from url
+		var newProjectName = form_data.new_project_name;
+		var title = document.getElementById('title');
+		title.innerHTML+=(newProjectName);
+		
+		//select sub_type
+
+		var derivative_type = ['stocks', 'options', 'contingent_onsiderations', 'swaps', 'bonds'];
+				/*for (i=0; i<derivative_type.length; i++){
+		var derivative_type[i]=document.getElementById(derivative_type[i]);
+		}
+		*/
+		var stocks=document.getElementById('stocks');
+		var options=document.getElementById('options');
+		var contingent_onsiderations=document.getElementById('contingent_onsiderations');
+		var swaps=document.getElementById('swaps');
+		var bonds=document.getElementById('bonds');
+		
+		for (i=0; i<derivative_type.length, i++{
+		derivative_type[i].addEventListener('change', derivative_type, false);
+		var select=document.createElement('select');
+		document.body.select_level_1.appendElement(select);
+		switch(derivative_type){
+		case 0:
+		var sub_type = ['preferred_stock', 'common_stock'];
+		var option = document.createElement('option');
+		option.innerHTML=sub_type;
+		break;
+		case 1:
+		var sub_type = ['call_option', 'put_option'];
+		var option = document.createElement('option');
+		option.innerHTML=sub_type;
+		break;
+		case 2:
+		var sub_type = ['revenue_cc', 'ebitda_cc','earnings_cc', 'fda_cc','other_cc'];
+		var option = document.createElement('option');
+		option.innerHTML=sub_type;
+		break;
+		case 3:
+		var sub_type = ['interest_rate_swap', 'currency_swap'];
+		var option = document.createElement('option');
+		option.innerHTML=sub_type;
+		break;
+		case 4:
+		var sub_type = ['convertible', 'callable', 'coupon', 'perpetual'];//not MECE
+		var option = document.createElement('option');
+		option.innerHTML=sub_type;
+		break;		
+		}
+		};
+			var table = document.createElement('table');
+	//table.setAttribute('cellpadding', 0);
+	//table.setAttribute('cellspacing', 0);
+	
+	document.body.appendChild(table);
+	var tr = document.createElement('tr');
+	table.appendChild(tr);	
+	for (var key in contacts[0]){
+		var th = document.createElement('th');
+		tr.appendChild(th);
+		th.innerHTML=key;
+		th.setAttribute('width', '25%');
+	}
+	for (var i=0; i<contacts.length; i++){
+		var tr = document.createElement('tr');
+		table.appendChild(tr);
+		for (var key in contacts[i]){			
+			var td = document.createElement('td');
+			tr.appendChild(td)
+			td.innerHTML=contacts[i][key];
+			td.setAttribute('width', '25%');			
+		}
+		
+	}
 	</script>
 	
 	</body>

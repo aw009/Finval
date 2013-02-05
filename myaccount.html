@@ -28,7 +28,7 @@
 		
 		<ul class="nav nav-tabs">
 			<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
-			<li><a href="#create_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>
+			<!--<li><a href="#create_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>-->
 			<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
 		</ul>
 		
@@ -41,13 +41,14 @@
 							<th>Project Date</th>
 							<th>Project Rights</th>
 						</tr>
-					</table>				
+					</table>
+					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>	
 				</div>
-			<div class="tab-content" >
+			<!--<div class="tab-content" >
 				<div class="tab-pane fade" id="create_project_tab">
-					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project</a>
+					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>
 				</div>									
-			</div>				
+			</div>-->				
 				<!-- Modal -->
 				<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-header">
@@ -57,7 +58,7 @@
 				  <div class="modal-body">
 					<form action="newproject.html" method="GET" id="new_project_header">
 
-						<label for="new_project_id">Project ID: </label><input name="new_project_id" id="new_project_id"><br>
+						<!--<label for="new_project_id">Project ID: </label><input name="new_project_id" id="new_project_id"><br>-->
 						<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
 						<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
 						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>						
@@ -107,20 +108,8 @@
 				e.preventDefault();
 				$("#collaboration_tab").tab('show');
 			});
-			//http://css-tricks.com/generate-a-random-number/
-			//generate a random project id	
-			$('#submit_new_project').click(function () {
-				var numLow = 0;
-				var numHigh = 10000;			
-				var adjustedHigh = (parseFloat(numHigh) - parseFloat(numLow)) + 1;			
-				var numRand = Math.floor(Math.random()*adjustedHigh) + parseFloat(numLow);			
-				if ((IsNumeric(numLow)) && (IsNumeric(numHigh)) && (parseFloat(numLow) <= parseFloat(numHigh) && (numLow != '') && (numHigh != '')) {
-					$("#new_project_id").text(numRand);
-					} else {
-					$("#new_project_id").text("oops");
-				}			
-				return false;
-			});
+
+			
 			$('#submit_new_project').click(function () {
 				$('#new_project_header').submit();
 			});
@@ -154,30 +143,25 @@
 				if (typeof form_data== 'undefined'){
 					$('body').html('Please log in');
 				}
-
 				//look in my user's projects
 
-				for (var i = projects.length - 1; i >= 0; i--) {
-					var table_string = '<tr id="tr_'+ projects[i].id +'">';
-						table_string += '<td><a href="project_view.html?project_id=' + projects[i].id + '">'+ projects[i].id +'</a></td>';
-						table_string += "<td>" + projects[i].name + "</td>";
-						table_string += "<td>" + projects[i].dates[0].date.toDateString() + "</td>";
-						table_string += "<td>" + getRoleForUserOnProject(user.id, projects[i].id, User_Project_Roles) + "</td>";
-					table_string += "</tr>";
+					for (var i = projects.length - 1; i >= 0; i--) {
+						var table_string = '<tr id="tr_'+ projects[i].id +'">';
+							table_string += '<td><a href="project_view.html?project_id=' + projects[i].id + '">'+ projects[i].id +'</a></td>';
+							table_string += "<td>" + projects[i].name + "</td>";
+							table_string += "<td>" + projects[i].dates[0].date.toDateString() + "</td>";
+							table_string += "<td>" + getRoleForUserOnProject(user.id, projects[i].id, User_Project_Roles) + "</td>";
+						table_string += "</tr>";
 
-					$('#existing_projects').append(table_string);
-					$('#tr_' + projects[i].id).click({index : i, project: projects[i]},function(e) {
-						//now add another table row, or even another table inside of this row, or a modal, or whatever
-						var ourProject = e.data.project;
-
-
-					})	
-				};
-
-			} else {
-				//user not logged in.
-
-			}
+						$('#existing_projects').append(table_string);
+						$('#tr_' + projects[i].id).click({index : i, project: projects[i]},function(e) {
+							//now add another table row, or even another table inside of this row, or a modal, or whatever
+							var ourProject = e.data.project;
+						})	
+					};
+				} else {
+					//user not logged in.
+				}
 
 			$('#submit_user').click(function () {
 			$('#sign_up_form').submit();
