@@ -11,23 +11,8 @@
 	<body>
 	<h1 id='title'> New Project </h1>
 
-
 	<h2> Please select project type</h2>
-	<select id='select_level_1)>
-		<option id='stocks'>Stock</option>
-		<option id='options'>Option</option>
-		<option id='contingent_onsiderations'>Contingent Consideration</option>
-			<ul>
-				<li><a href="#">Revenue</a></li>
-				<li><a href="#">EBITDA</a></li>
-				<li><a href="#">Earning</a></li>
-				<li><a href="#">FDA</a></li>
-				<li><a href="#">Other</a></li>
-			</ul>
-		<option id='swaps'>Swap</option>
-		<option id='bonds'>Bond</option>
-	</select>
-	
+
 	<script>
 	
 		// display new project name
@@ -37,74 +22,50 @@
 		title.innerHTML+=(newProjectName);
 		
 		//select sub_type
+		var derivative_type = ['stocks', 'options', 'contingent_considerations', 'swaps', 'bonds'];
 
-		var derivative_type = ['stocks', 'options', 'contingent_onsiderations', 'swaps', 'bonds'];
-				/*for (i=0; i<derivative_type.length; i++){
-		var derivative_type[i]=document.getElementById(derivative_type[i]);
+		var select_level_1=document.createElement('select');
+		document.body.appendChild(select_level_1);		
+		for (i=0; i<derivative_type.length; i++){
+			var main_option = document.createElement('option');
+			main_option.innerHTML=derivative_type[i];
+			main_option.id=derivative_type[i];
+			select_level_1.appendChild(main_option);		
 		}
-		*/
-		var stocks=document.getElementById('stocks');
-		var options=document.getElementById('options');
-		var contingent_onsiderations=document.getElementById('contingent_onsiderations');
-		var swaps=document.getElementById('swaps');
-		var bonds=document.getElementById('bonds');
 		
-		for (i=0; i<derivative_type.length, i++{
-		derivative_type[i].addEventListener('change', derivative_type, false);
-		var select=document.createElement('select');
-		document.body.select_level_1.appendElement(select);
-		switch(derivative_type){
-		case 0:
-		var sub_type = ['preferred_stock', 'common_stock'];
-		var option = document.createElement('option');
-		option.innerHTML=sub_type;
-		break;
-		case 1:
-		var sub_type = ['call_option', 'put_option'];
-		var option = document.createElement('option');
-		option.innerHTML=sub_type;
-		break;
-		case 2:
-		var sub_type = ['revenue_cc', 'ebitda_cc','earnings_cc', 'fda_cc','other_cc'];
-		var option = document.createElement('option');
-		option.innerHTML=sub_type;
-		break;
-		case 3:
-		var sub_type = ['interest_rate_swap', 'currency_swap'];
-		var option = document.createElement('option');
-		option.innerHTML=sub_type;
-		break;
-		case 4:
-		var sub_type = ['convertible', 'callable', 'coupon', 'perpetual'];//not MECE
-		var option = document.createElement('option');
-		option.innerHTML=sub_type;
-		break;		
-		}
+		for (i=0; i<derivative_type.length; i++){	
+			var get_derivative_type=document.getElementById(derivative_type[i]);
+			get_derivative_type.addEventListener('onchange', add_sub_type, false);
+			function add_sub_type(){
+				var select_level_2=document.createElement('select');
+				document.body.appendChild(select_level_2);					
+				switch(i){
+					case 0:
+						var sub_type = ['preferred_stock', 'common_stock'];
+					break;
+					case 1:
+						var sub_type = ['call_option', 'put_option'];
+					break;
+					case 2:
+						var sub_type = ['revenue_cc', 'ebitda_cc','earnings_cc', 'fda_cc','other_cc'];
+					break;
+					case 3:
+						var sub_type = ['interest_rate_swap', 'currency_swap'];
+					break;
+					case 4:
+						var sub_type = ['convertible', 'callable', 'coupon', 'perpetual'];//not MECE
+					break;		
+				}
+				for (j=0; j<sub_type.length; j++){
+				var sub_option = document.createElement('option');
+				sub_option.innerHTML=sub_type[j];
+				select_level_2.appendChild(sub_option);	
+				}
+			}
 		};
-			var table = document.createElement('table');
-	//table.setAttribute('cellpadding', 0);
-	//table.setAttribute('cellspacing', 0);
 	
-	document.body.appendChild(table);
-	var tr = document.createElement('tr');
-	table.appendChild(tr);	
-	for (var key in contacts[0]){
-		var th = document.createElement('th');
-		tr.appendChild(th);
-		th.innerHTML=key;
-		th.setAttribute('width', '25%');
-	}
-	for (var i=0; i<contacts.length; i++){
-		var tr = document.createElement('tr');
-		table.appendChild(tr);
-		for (var key in contacts[i]){			
-			var td = document.createElement('td');
-			tr.appendChild(td)
-			td.innerHTML=contacts[i][key];
-			td.setAttribute('width', '25%');			
-		}
+			
 		
-	}
 	</script>
 	
 	</body>
