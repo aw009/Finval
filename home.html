@@ -4,9 +4,27 @@
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<style>
-		#search_text{
-		margin-right: auto
-		}
+			#search_text{
+				margin-right: auto
+			}
+			
+			body{
+				font-family: sans-serif;
+			}
+						
+			.carousel{
+				text-align:justify;
+				display: block;				
+				text-align: center;	
+			}
+
+			#carouseltext  {
+				color: red;
+			}			
+			
+			#carouselimg  {
+				height: 200px;
+			}	
 		</style>
 	</head>
 
@@ -35,11 +53,11 @@
 
 				<div class="tab-content" >
 					<div class="tab-pane fade active" id="home_image">
-						<div class="span8">
-							<img src="http://placekitten.com/500/300" width="100%">	
+						<div id="homeimg" class="img-text" class="span8">
+							<a href="javascript:nextImage('storypic')"><b><img src="homeimg0.jpg" id="storypic" title="Once upon a time, there was a cat."></img></b></a>
 						</div>
 					</div>
-					
+					<embed name="music" src="music.mp3" loop="false" hidden="true" autostart="false">
 					<div class="tab-pane fade hide" id="how_it_works_tab">
 						How it Works			
 					</div>
@@ -82,18 +100,51 @@
 				$("#about_us_tab").tab('show');
 				console.log("clicked");
 			})
-		var users =[];
-		<!--var button = document.getElementById("submit_user");-->
-		var button = $('#submit_user')
+			var users =[];
+			<!--var button = document.getElementById("submit_user");-->
+			var button = $('#submit_user')
+			
+			<!-- console.log(button); -->		
+			
+			$('#submit_user').click(function () {
+				$('#sign_up_form').submit();
+			})
 		
-		<!-- console.log(button); -->		
-		
-		$('#submit_user').click(function () {
-			$('#sign_up_form').submit();
-		})
-	
-		var derivative_type_search=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
-		$('#derivative_type_search').typeahead({source: derivative_type_search});
+			var derivative_type_search=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
+			$('#derivative_type_search').typeahead({source: derivative_type_search});
+			
+			//home carousel
+			var textArray =[];
+			textArray[0] = "Once upon a time, there was a cat.";
+			textArray[1] = "Cat got a hold of our beautiful models";
+			textArray[2] = "Cat lived happily ever after...";
+			
+			var imgArray = new Array();
+			imgArray[0] = new Image();
+			imgArray[0].src = 'homeimg0.jpg';
+			imgArray[0].title = textArray[0];
+			imgArray[1] = new Image();
+			imgArray[1].src = 'homeimg1.bmp';
+			imgArray[1].title = textArray[1];			
+			imgArray[2] = new Image();
+			imgArray[2].src = 'homeimg2.jpg';
+			imgArray[2].title = textArray[2];
+
+			function nextImage(element){
+				var img = document.getElementById(element);
+				for(var i = 0; i < imgArray.length-1;i++){
+					if(imgArray[i].src == img.src){
+						if(i === imgArray.length){
+							document.getElementById(element).src = imgArray[0].src;
+							document.getElementById(element).title = imgArray[0].title;							
+							break;
+						}
+						document.getElementById(element).src = imgArray[i+1].src;
+						document.getElementById(element).title = imgArray[i+1].title;
+						break;
+					}
+				}
+			}
 		</script>
 		
 	</body>
