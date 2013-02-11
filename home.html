@@ -97,6 +97,15 @@
 				$("#home_image_tab").fadeOut(50);				
 				$("#about_us_tab").tab('show');
 			})
+			$('.brand').click(function (){
+				$('#home_image_tab').fadeIn(50);
+				$('#about_us_tab').removeClass('active');
+				$('#about_us_tab').addClass('hide');
+				$('#how_it_works_tab').removeClass('active')				
+				$('#how_it_works_tab').addClass('hide');
+				$('ul > li.active').removeClass('active');
+			})		
+			
 			var users =[];
 			<!--var button = document.getElementById("submit_user");-->
 			var button = $('#submit_user')
