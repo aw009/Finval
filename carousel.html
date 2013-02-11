@@ -2,7 +2,7 @@
 	<head>
 		<style>
 			#search_text{
-				margin-right: auto
+				margin-right: auto;
 			}
 			
 			body{
@@ -31,7 +31,7 @@
 
 			<div id="carousel" class="carousel">
 				<h1> Cat Carousel</h1>
-				<a href="javascript:nextImage('carouselimg')"><b><img src="carouselimg0.jpg" id="carouselimg"></img></b></a>
+				<a href="javascript:nextImage('carouselimg')"><img src="carouselimg0.jpg" id="carouselimg"></a>
 				<h2 id="carouseltext"> Once upon a time, there was a cat.</h2>		
 			</div>
 
@@ -48,7 +48,7 @@
 			textArray[1] = "Cat liked to have fun.";
 			textArray[2] = "And more fun...";
 			//https://developer.mozilla.org/en-US/docs/DOM/HTMLMediaElement
-			var imgArray = new Array();
+			var imgArray = [];
 			imgArray[0] = new Image();
 			imgArray[0].src = 'carouselimg0.jpg';
 			imgArray[0].title = textArray[0];
