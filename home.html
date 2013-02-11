@@ -92,13 +92,13 @@
 		<script type="text/javascript">
 			$('#how_it_works_link').click(function (e){
 				e.preventDefault();
+				$("#home_image_tab").fadeOut(50);
 				$("#how_it_works_tab").tab('show');
-				console.log("clicked");
 			})
 			$('#about_us_link').click(function (e){
 				e.preventDefault();
+				$("#home_image_tab").fadeOut(50);				
 				$("#about_us_tab").tab('show');
-				console.log("clicked");
 			})
 			var users =[];
 			<!--var button = document.getElementById("submit_user");-->
