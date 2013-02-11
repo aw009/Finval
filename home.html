@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -11,19 +12,16 @@
 			body{
 				font-family: sans-serif;
 			}
-						
+			input{
+				font-size: 18px;
+			}
 			.carousel{
 				text-align:justify;
-				display: block;				
-				text-align: center;	
-			}
-
-			#carouseltext  {
-				color: red;
-			}			
+				display: block;					
+			}		
 			
 			#carouselimg  {
-				height: 200px;
+				height: 60%;
 			}	
 		</style>
 	</head>
@@ -41,7 +39,7 @@
 		</div>
 		
 		<div>
-		<h3 id='search_text'><input type="text" data-provide="typeahead" id="derivative_type_search">Search</h3>
+		<input type="text" data-provide="typeahead" id="derivative_type_search"><a class="btn btn-info"  role="button" id='search_text'>Search</a>
 		</div>
 		
 		<div class="row-fluid">
@@ -53,16 +51,23 @@
 				<div class="tab-content row-fluid" >
 
 					<div class="tab-pane fade hide" id="how_it_works_tab">
-					<p>	it Works </p>			
+					<p>	It works wonders by making everything free. </p>			
 					</div>
 				
 					<div class="tab-pane fade hide" id="about_us_tab">
-						<p>About Us</p>
+						<p>We redefine finance. </p>
 					</div>
 				</div>				
 				<div id="home_image_tab">
-					<img src="carouselimg0.jpg">
+					<div id="carousel" class="carousel">
+						<a href="javascript:nextImage('carouselimg')"><b><img src="carouselimg0.jpg" id="carouselimg"></img></b></a>
+						<h2 id="carouseltext"> Once upon a time, there was a cat.</h2>		
+					</div>
+
+		<audio id="carouselmusic" src="music.mp3"></audio>
 				</div>
+
+
 			</div>
 		</div>
 		
@@ -120,34 +125,41 @@
 			$('#derivative_type_search').typeahead({source: derivative_type_search});
 			
 			//home carousel
+						var title = document.getElementById("carouseltext");
+			var music = document.getElementById("carouselmusic");
 			var textArray =[];
 			textArray[0] = "Once upon a time, there was a cat.";
-			textArray[1] = "Cat got a hold of our beautiful models";
-			textArray[2] = "Cat lived happily ever after...";
-			
+			textArray[1] = "Cat liked to have fun.";
+			textArray[2] = "And more fun...";
+			//https://developer.mozilla.org/en-US/docs/DOM/HTMLMediaElement
 			var imgArray = new Array();
 			imgArray[0] = new Image();
-			imgArray[0].src = 'homeimg0.jpg';
+			imgArray[0].src = 'carouselimg0.jpg';
 			imgArray[0].title = textArray[0];
 			imgArray[1] = new Image();
-			imgArray[1].src = 'homeimg1.bmp';
+			imgArray[1].src = 'carouselimg1.jpg';
 			imgArray[1].title = textArray[1];			
 			imgArray[2] = new Image();
-			imgArray[2].src = 'homeimg2.jpg';
+			imgArray[2].src = 'carouselimg2.jpg';
 			imgArray[2].title = textArray[2];
 
 			function nextImage(element){
 				var img = document.getElementById(element);
-				for(var i = 0; i < imgArray.length-1;i++){
+				for(var i = 0; i < imgArray.length;i++){
 					if(imgArray[i].src == img.src){
-						if(i === imgArray.length){
+						if(i==0){
+							music.play();
+							}
+						if(i === imgArray.length-1){
 							document.getElementById(element).src = imgArray[0].src;
-							document.getElementById(element).title = imgArray[0].title;							
+							title.innerHTML = imgArray[0].title;
+							music.pause();
 							break;
-						}
+						}else{
 						document.getElementById(element).src = imgArray[i+1].src;
-						document.getElementById(element).title = imgArray[i+1].title;
+						title.innerHTML = imgArray[i+1].title;
 						break;
+						}
 					}
 				}
 			}
