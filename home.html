@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -11,19 +12,16 @@
 			body{
 				font-family: sans-serif;
 			}
-						
+			input{
+				font-size: 18px;
+			}
 			.carousel{
 				text-align:justify;
-				display: block;				
-				text-align: center;	
-			}
-
-			#carouseltext  {
-				color: red;
-			}			
+				display: block;					
+			}		
 			
 			#carouselimg  {
-				height: 200px;
+				height: 60%;
 			}	
 		</style>
 	</head>
@@ -41,7 +39,7 @@
 		</div>
 		
 		<div>
-		<h3 id='search_text'><input type="text" data-provide="typeahead" id="derivative_type_search">Search</h3>
+		<input type="text" data-provide="typeahead" id="derivative_type_search"><a class="btn btn-info"  role="button" id='search_text'>Search</a>
 		</div>
 		
 		<div class="row-fluid">
@@ -50,22 +48,26 @@
 					<li class="pull-right"><a href="#about_us_tab" id="about_us_link" data-toggle="tab">About us <i class="icon-folder-open"></i></a></li>
 					<li class="pull-right"><a href="#how_it_works_tab" id="how_it_works_link" data-toggle="tab">How it works <i class="icon-folder-close"></i></a></li>
 				</ul>
+				<div class="tab-content row-fluid" >
 
-				<div class="tab-content" >
-					<div class="tab-pane fade active" id="home_image">
-						<div id="homeimg" class="img-text" class="span8">
-							<a href="javascript:nextImage('storypic')"><b><img src="homeimg0.jpg" id="storypic" title="Once upon a time, there was a cat."></img></b></a>
-						</div>
-					</div>
-					<embed name="music" src="music.mp3" loop="false" hidden="true" autostart="false">
 					<div class="tab-pane fade hide" id="how_it_works_tab">
-						How it Works			
+					<p>	It works wonders by making everything free. </p>			
 					</div>
 				
 					<div class="tab-pane fade hide" id="about_us_tab">
-						About Us
+						<p>We redefine finance. </p>
 					</div>
-				</div>			
+				</div>				
+				<div id="home_image_tab">
+					<div id="carousel" class="carousel">
+						<a href="javascript:nextImage('carouselimg')"><b><img src="carouselimg0.jpg" id="carouselimg"></img></b></a>
+						<h2 id="carouseltext"> Once upon a time, there was a cat.</h2>		
+					</div>
+
+		<audio id="carouselmusic" src="music.mp3"></audio>
+				</div>
+
+
 			</div>
 		</div>
 		
@@ -92,14 +94,23 @@
 		<script type="text/javascript">
 			$('#how_it_works_link').click(function (e){
 				e.preventDefault();
+				$("#home_image_tab").fadeOut(50);
 				$("#how_it_works_tab").tab('show');
-				console.log("clicked");
 			})
 			$('#about_us_link').click(function (e){
 				e.preventDefault();
+				$("#home_image_tab").fadeOut(50);				
 				$("#about_us_tab").tab('show');
-				console.log("clicked");
 			})
+			$('.brand').click(function (){
+				$('#home_image_tab').fadeIn(50);
+				$('#about_us_tab').removeClass('active');
+				$('#about_us_tab').addClass('hide');
+				$('#how_it_works_tab').removeClass('active')				
+				$('#how_it_works_tab').addClass('hide');
+				$('ul > li.active').removeClass('active');
+			})		
+			
 			var users =[];
 			<!--var button = document.getElementById("submit_user");-->
 			var button = $('#submit_user')
@@ -114,34 +125,41 @@
 			$('#derivative_type_search').typeahead({source: derivative_type_search});
 			
 			//home carousel
+						var title = document.getElementById("carouseltext");
+			var music = document.getElementById("carouselmusic");
 			var textArray =[];
 			textArray[0] = "Once upon a time, there was a cat.";
-			textArray[1] = "Cat got a hold of our beautiful models";
-			textArray[2] = "Cat lived happily ever after...";
-			
+			textArray[1] = "Cat liked to have fun.";
+			textArray[2] = "And more fun...";
+			//https://developer.mozilla.org/en-US/docs/DOM/HTMLMediaElement
 			var imgArray = new Array();
 			imgArray[0] = new Image();
-			imgArray[0].src = 'homeimg0.jpg';
+			imgArray[0].src = 'carouselimg0.jpg';
 			imgArray[0].title = textArray[0];
 			imgArray[1] = new Image();
-			imgArray[1].src = 'homeimg1.bmp';
+			imgArray[1].src = 'carouselimg1.jpg';
 			imgArray[1].title = textArray[1];			
 			imgArray[2] = new Image();
-			imgArray[2].src = 'homeimg2.jpg';
+			imgArray[2].src = 'carouselimg2.jpg';
 			imgArray[2].title = textArray[2];
 
 			function nextImage(element){
 				var img = document.getElementById(element);
-				for(var i = 0; i < imgArray.length-1;i++){
+				for(var i = 0; i < imgArray.length;i++){
 					if(imgArray[i].src == img.src){
-						if(i === imgArray.length){
+						if(i==0){
+							music.play();
+							}
+						if(i === imgArray.length-1){
 							document.getElementById(element).src = imgArray[0].src;
-							document.getElementById(element).title = imgArray[0].title;							
+							title.innerHTML = imgArray[0].title;
+							music.pause();
 							break;
-						}
+						}else{
 						document.getElementById(element).src = imgArray[i+1].src;
-						document.getElementById(element).title = imgArray[i+1].title;
+						title.innerHTML = imgArray[i+1].title;
 						break;
+						}
 					}
 				}
 			}
