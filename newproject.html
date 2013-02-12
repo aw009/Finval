@@ -12,9 +12,29 @@
 	<h1 id='title'> New Project </h1>
 
 	<h2> Please select project type</h2>
+	
+	<div id="new_project_container"> 
+		<form id="new_project_form" name="new_project_form">
+		
+		</form>
+	</div>
 
 	<script>
-	
+		function createDropdown(id, array){
+			var s = $('<select>');
+			s.attr('id', id);
+			for (var i=0; i<array.length; i++) {
+				var o = $('<option>');
+				o.html(array[i]);
+				s.append(o);
+			}
+			return s;
+		}
+		
+		function getSubtypes(type, array){
+			
+		}
+		
 		// display new project name
 		var form_data = parseURLIntoObject(window.location.search); //gets data from url
 		var newProjectName = form_data.new_project_name;
@@ -22,48 +42,16 @@
 		title.innerHTML+=(newProjectName);
 		
 		//select sub_type
-		var derivative_type = ['stocks', 'options', 'contingent_considerations', 'swaps', 'bonds'];
-
-		var select_level_1=document.createElement('select');
-		document.body.appendChild(select_level_1);		
-		for (i=0; i<derivative_type.length; i++){
-			var main_option = document.createElement('option');
-			main_option.innerHTML=derivative_type[i];
-			main_option.id=derivative_type[i];
-			select_level_1.appendChild(main_option);		
-		}
+		var types = ['stocks', 'options', 'contingent_considerations', 'swaps', 'bonds'];
 		
-		for (i=0; i<derivative_type.length; i++){	
-			var get_derivative_type=document.getElementById(derivative_type[i]);
-			get_derivative_type.addEventListener('onchange', add_sub_type, false);
-			function add_sub_type(){
-				var select_level_2=document.createElement('select');
-				document.body.appendChild(select_level_2);					
-				switch(i){
-					case 0:
-						var sub_type = ['preferred_stock', 'common_stock'];
-					break;
-					case 1:
-						var sub_type = ['call_option', 'put_option'];
-					break;
-					case 2:
-						var sub_type = ['revenue_cc', 'ebitda_cc','earnings_cc', 'fda_cc','other_cc'];
-					break;
-					case 3:
-						var sub_type = ['interest_rate_swap', 'currency_swap'];
-					break;
-					case 4:
-						var sub_type = ['convertible', 'callable', 'coupon', 'perpetual'];//not MECE
-					break;		
-				}
-				for (j=0; j<sub_type.length; j++){
-				var sub_option = document.createElement('option');
-				sub_option.innerHTML=sub_type[j];
-				select_level_2.appendChild(sub_option);	
-				}
-			}
-		};
-	
+		var derivative_select = createDropdown('types',types);
+		$('#new_project_form').append(derivative_select);
+		
+		derivative_select.change( function(){
+			var type = $('#derivative_select option:selected').val();
+			ver newTypesList = getSubtypes(type,types)
+		});
+		
 			
 		
 	</script>
