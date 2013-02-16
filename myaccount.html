@@ -44,11 +44,7 @@
 					</table>
 					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>	
 				</div>
-			<!--<div class="tab-content" >
-				<div class="tab-pane fade" id="create_project_tab">
-					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>
-				</div>									
-			</div>-->				
+			
 				<!-- Modal -->
 				<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-header">
@@ -56,12 +52,12 @@
 					<h3 id="myModalLabel">New Project</h3>
 				  </div>		
 				  <div class="modal-body">
-					<form action="newproject.html" method="GET" id="new_project_header">
+					<form action="newproject.html" method="GET" id="new_project_form">
 
-						<!--<label for="new_project_id">Project ID: </label><input name="new_project_id" id="new_project_id"><br>-->
 						<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
 						<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
 						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>						
+						
 					</form>
 				  </div>				  
 				  <div class="modal-footer">
@@ -111,7 +107,7 @@
 
 			
 			$('#submit_new_project').click(function () {
-				$('#new_project_header').submit();
+				$('#new_project_form').submit();
 			});
 			
 
@@ -126,8 +122,8 @@
 				var user = {
 					name : form_data.user_name,
 					email : form_data.user_email,
-					phone : form_data.user_email,
-					password : form_data.user_email,
+					phone : form_data.user_phone,
+					password : form_data.user_password,
 					id : 2
 				};
 			}
@@ -171,7 +167,8 @@
 			var project_type=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
 			$('#project_type').typeahead({source: project_type});
 			
-	
+			//carry state
+			carryState(form_data, 'new_project_form');
 		</script>
 		
 	</body>

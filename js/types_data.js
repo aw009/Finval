@@ -3,8 +3,8 @@ name:"derivitive_types",
 subtypes: [
 			{name:"stock",
 			 subtypes: [
-			 			{name: "Common Stock", subtypes[]},
-			 			{name: "Preferred Stock", subtypes[]}
+			 			{name: "Common Stock", subtypes:[]},
+			 			{name: "Preferred Stock", subtypes:[]}
 			 			]
 			},
 			{name:"bond",
@@ -42,9 +42,14 @@ subtypes: [
 
 		
 function getOptions(name, a) {
+	if (typeof a =='object'){
+	a = a.subtypes;	
+	}
 	for (var i =0;i<a.length;i++) {
+	console.log(a[i].name == name);
 		if (a[i].name == name) {
 			if (a[i].subtypes) {
+			console.log('a1');
 				a[i].subtypes.type = 'subtypes';
 				return a[i].subtypes;
 			} else {
@@ -56,12 +61,13 @@ function getOptions(name, a) {
 }
 var options = getOptions('derivitive_types', types);
 
-var dropdown = $('<select>');
-for (var i=0; i<options.length; i++){
-	var option = $('<option>');
-	option.html(options[i].name);
-	dropdown.append(option);
+function dropdown_maker(options, id){
+	var dropdown = $('<select>');
+	for (var i=0; i<options.length; i++){
+		var option = $('<option>');
+		option.html(options[i].name);
+		dropdown.append(option);
+	}
+	$('#'+id).append(dropdown);
 }
-$('#dropdown').append(dropdown);
-
 

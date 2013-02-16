@@ -1,24 +1,34 @@
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/projects.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/types_data.js"></script>
+		
 	</head>
 
 	<body>
+	<!-- Nav Bar -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="home.html">FinVal</a>
+			<div class="nav pull-right">
+				<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+				<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-success"  id="account_info" role="button" href="accountinfo.html">My Account</a>					
+			</div>
+		</div>
+	</div>
+	
 	<h1 id='title'> New Project </h1>
 
 	<h2> Please select project type</h2>
+
+	
 	
 	<div id="new_project_container"> 
 		<form id="new_project_form" name="new_project_form">
-			<!--http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-			<div class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:getOptions('bond', types.subtypes)">Select</a>
+			<div id='dropdown'>
+			
 			</div>
+		
 		</form>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
@@ -26,52 +36,25 @@
 		</div>
 	</div>
 
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/projects.js"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/types_data.js"></script>
+	<script src="js/show_account_button.js"></script>
 	<script>
-		function createDropdown(id, array){
-			var s = $('<select>');
-			s.attr('id', id);
-			for (var i=0; i<array.length; i++) {
-				var o = $('<option>');
-				o.html(array[i]);
-				s.append(o);
-			}
-			return s;
-		}
-		
-
-
 		
 		// display new project name
 		var form_data = parseURLIntoObject(window.location.search); //gets data from url
 		var newProjectName = form_data.new_project_name;
 		var title = document.getElementById('title');
 		title.innerHTML+=(newProjectName);
-		
-		//select sub_type
-		var types = ['stocks', 'options', 'contingent_considerations', 'swaps', 'bonds'];
-		
-		var derivative_select = createDropdown('types',types);
-		$('#new_project_form').append(derivative_select);
-		
-		derivative_select.change( function(){
-			var type = $('#derivative_select option:selected').val();
-			ver newTypesList = getSubtypes(type,types)
-		});
-		
-		var projects =[];
-		//<!--var button = document.getElementById("submit_user");-->
-		var button_project = $('#submit_new_project')		
-		//<!-- console.log(button); -->
+	
+		carryState(form_data, 'new_project_form'); 	
 				
-		$('#submit_new_project').click(function () {
-			var project = {
-				type : $('#project_type').val(),
-				sub_type : $('#project_sub_type').val(),
-				property : $('#project_property').val(),
-				sub_sub_type: 
-			}
-			projects.push(project);
-		})			
+
+				
+		
 	
 	</script>
 	
