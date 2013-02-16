@@ -51,7 +51,9 @@
 		title.innerHTML+=(newProjectName);
 	
 		carryState(form_data, 'new_project_form'); 	
-				
+		
+		var options = getOptions('derivitive_types', types);
+		dropdown_maker(options, 'dropdown');
 
 				
 		
