@@ -1,5 +1,5 @@
 types = {
-name:"derivitive type",
+name:"derivitive_types",
 subtypes: [
 			{name:"stock",
 			 subtypes: [
@@ -12,21 +12,35 @@ subtypes: [
 							["callable", "none", "putable"],
 			 				{convertable : false},
 			 				{coupon: 0, fixed: true},
-			 				["Finite", "Infinite"]
+			 				["Finite", "Perpetual"]
 			 			]
 			},
 			{name:"option",
-			properties: []
+			properties: [
+							["call", "put"],
+							["European", "American", "Asian"]
+						]
 			},
 			{name:"swap",
-			subtypes: [{name: "Interest Rate", subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]},{name: "Currency", subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]},{name: "Commodity", subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]}]
+			subtypes: [
+				{name: "Interest Rate", 
+				subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]
+				},
+				{name: "Currency", 
+				subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]
+				},
+				{name: "Commodity", 
+				subtypes: ["Fixed to Fixed", "Fixed to Floating", "Floating to Floating"]
+				}
+			]
+			
 			}
 
 		]
 };
 
-var options = getOptions('bond', types.subtypes);
 
+		
 function getOptions(name, a) {
 	for (var i =0;i<a.length;i++) {
 		if (a[i].name == name) {
@@ -40,15 +54,18 @@ function getOptions(name, a) {
 		}
 	}
 }
+var options = getOptions('bond', types.subtypes);
 
 function showOptions(options) {
 	//options is an array
 	for (var i = 0; i<options.length;i++) {
 		if (options.type == 'properties') {
 			//create Radio Buttons, and other things
+			$('.nav-tabs').button();
 		} else {
 			//Create a dropdown
-		}
+			var dropdown = 
+			$('.dropdown-toggle').dropdown();
+		}$('<select>')
 	}
-}
 
