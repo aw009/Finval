@@ -15,7 +15,6 @@
 				};
 			}
 			
-			console.log(user);
 			
 			if (user) {
 				//Put all your code for changing the page if the user is logged in

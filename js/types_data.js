@@ -42,17 +42,16 @@ subtypes: [
 
 		
 function getOptions(name, a) {
-	if (typeof a =='object'){
-	a = a.subtypes;	
-	return a;
+	if (!a.length){
+		a = a.subtypes;	
+		return a;
 	}
+
 	for (var i =0;i<a.length;i++) {
 		if (a[i].name == name) {
 			if (a[i].subtypes) {
-				a[i].subtypes.type = 'subtypes';
 				return a[i].subtypes;
 			} else {
-				a[i].properties.type = 'properties';
 				return a[i].properties;
 			}
 		}
@@ -60,14 +59,14 @@ function getOptions(name, a) {
 }
 
 
-	function dropdown_maker(options, id){
+function dropdown_maker(options, location_id, dropdown_id){
 	var dropdown = $('<select>');
-	
+	dropdown.attr('id',dropdown_id);
 	for (var i=0; i<options.length; i++){
 		var option = $('<option>');
-		option.html(options[i].name);
+		option.html(options[i].name || options[i]);
 		dropdown.append(option);
 	}
-	$('#'+id).append(dropdown);
+	$('#'+location_id).append(dropdown);
 }
 

@@ -53,10 +53,17 @@
 		carryState(form_data, 'new_project_form'); 	
 		
 		var options = getOptions('derivitive_types', types);
-		dropdown_maker(options, 'dropdown');
-
-				
+		dropdown_maker(options, 'dropdown', 'level_1');
 		
+		var change = $('#level_1').change(function(){	
+		var options_level_2 = getOptions(change.val(), types.subtypes);
+		dropdown_maker(options_level_2, 'dropdown', 'level_2');
+		
+		var change_2 = $('#level_2').change(function(){	
+		var options_level_3 = getOptions(change_2.val(), options_level_2);
+		dropdown_maker(options_level_3, 'dropdown', 'level_3');
+		})
+		});
 	
 	</script>
 	
