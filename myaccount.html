@@ -1,10 +1,7 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/projects.js"></script>
-		<script src="js/utils.js"></script>
 		
 	</head>
 
@@ -28,7 +25,6 @@
 		
 		<ul class="nav nav-tabs">
 			<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
-			<!--<li><a href="#create_project_tab" id="new_project_link" data-toggle="tab">Create Project <i class="icon-folder-open"></i></a></li>-->
 			<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
 		</ul>
 		
@@ -53,11 +49,9 @@
 				  </div>		
 				  <div class="modal-body">
 					<form action="newproject.html" method="GET" id="new_project_form">
-
 						<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
 						<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
-						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>						
-						
+						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>												
 					</form>
 				  </div>				  
 				  <div class="modal-footer">
@@ -90,8 +84,14 @@
 					</table>			
 				</div>			
 			</div>			
-				
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>
+		
 		<script type="text/javascript">
+			//show or hide tabs
 			$('#existing_project_link').click(function (e){
 				e.preventDefault();
 				$("#existing_project_tab").tab('show');
@@ -105,42 +105,20 @@
 				$("#collaboration_tab").tab('show');
 			});
 
-			
+			// submit new project
 			$('#submit_new_project').click(function () {
 				$('#new_project_form').submit();
 			});
 			
 
-			var form_data = parseURLIntoObject(window.location.search);
+			//var form_data = parseURLIntoObject(window.location.search);
+			//$('a:not([data-toggle])').each(function () {
+			//	var newURL = $(this).attr('href') + window.location.search;
+			//	$(this).attr('href', newURL);
+			//});
 			
-			$('a:not([data-toggle])').each(function () {
-				var newURL = $(this).attr('href') + window.location.search;
-				$(this).attr('href', newURL);
-			});
-
-			if (form_data.user_name) {
-				var user = {
-					name : form_data.user_name,
-					email : form_data.user_email,
-					phone : form_data.user_phone,
-					password : form_data.user_password,
-					id : 2
-				};
-			}
-			
-			if (user) {
-				//Put all your code for changing the page if the user is logged in
-				$('#log_in').hide();
-				$('#sign_up').hide();
-			
-			
-
-				$('#greet_user').html(form_data.user_name + " is crunching");
-				if (typeof form_data== 'undefined'){
-					$('body').html('Please log in');
-				}
 				//look in my user's projects
-
+				if (user){
 					for (var i = projects.length - 1; i >= 0; i--) {
 						var table_string = '<tr id="tr_'+ projects[i].id +'">';
 							table_string += '<td><a href="project_view.html?project_id=' + projects[i].id + '">'+ projects[i].id +'</a></td>';
@@ -159,13 +137,9 @@
 					//user not logged in.
 				}
 
-			$('#submit_user').click(function () {
-			$('#sign_up_form').submit();
-			})
-		
-			//search list
-			var project_type=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
-			$('#project_type').typeahead({source: project_type});
+			//$('#submit_user').click(function () {
+			//$('#sign_up_form').submit();
+			//})
 			
 			//carry state
 			carryState(form_data, 'new_project_form');

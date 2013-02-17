@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -19,43 +20,45 @@
 	
 	<h1 id='title'> New Project </h1>
 
-	<h2> Please select project type</h2>
-
-	
+	<h2> Please select project type</h2>	
 	
 	<div id="new_project_container"> 
 		<form id="new_project_form" name="new_project_form">
 			<div id='dropdown'>
 			
-			</div>
-		
+			</div>		
 		</form>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 			<button class="btn btn-primary" id="submit_new_project">Save</button>
 		</div>
 	</div>
-
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/projects.js"></script>
 	<script src="js/utils.js"></script>
 	<script src="js/types_data.js"></script>
 	<script src="js/show_account_button.js"></script>
-	<script>
+	<script type="text/javascript">
 		
 		// display new project name
 		var form_data = parseURLIntoObject(window.location.search); //gets data from url
 		var newProjectName = form_data.new_project_name;
 		var title = document.getElementById('title');
 		title.innerHTML+=(newProjectName);
-	
-		carryState(form_data, 'new_project_form'); 	
-		
+
+		//dropdown for 3 levels
 		var options = getOptions('derivitive_types', types);
 		dropdown_maker(options, 'dropdown', 'level_1');
 		
-		var change = $('#level_1').change(function(){	
+		var changed = 0;
+		var change = $('#level_1').change(function(){
+		if(changed>0){
+		location.reload();
+		}
+		changed++;
+		
 		var options_level_2 = getOptions(change.val(), types.subtypes);
 		dropdown_maker(options_level_2, 'dropdown', 'level_2');
 		
@@ -64,7 +67,8 @@
 		dropdown_maker(options_level_3, 'dropdown', 'level_3');
 		})
 		});
-	
+		//carry state
+		carryState(form_data, 'new_project_form');	
 	</script>
 	
 	</body>

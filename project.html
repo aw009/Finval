@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+
 	</head>
 
 	<body>
@@ -12,8 +12,9 @@
 		 	<div class="navbar-inner">
 				<a class="brand" href="#">FinVal</a>
 				<div class="nav pull-right">
-					<a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-					<a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+				<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-success"  id="account_info" role="button" href="accountinfo.html">My Account</a>	
 				</div>
 			</div>
 		</div>
@@ -67,8 +68,13 @@
 					</table>
 				</div>			
 			</div>			
-				
+		<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>		
 		<script type="text/javascript">
+			// show hide tabs
 			$('#method_1_link').click(function (e){
 				e.preventDefault();
 				$("#method_1_tab").tab('show');
@@ -81,7 +87,8 @@
 				e.preventDefault();
 				$("#method_3_tab").tab('show');
 			})
-		
+			
+			//submit project
 			var projects =[];
 			<!--var button = document.getElementById("submit_user");-->
 			var button_project = $('#submit_project')		
@@ -97,6 +104,7 @@
 				inputs.push(input);
 			})		
 			
+			//submit input Do I need it? Yes, I guess.
 			var inputs =[];
 			<!--var button = document.getElementById("submit_user");-->
 			var button_input = $('#submit_inputs')		
@@ -111,26 +119,9 @@
 				}
 				inputs.push(input);
 			})
-
-			function parseURLIntoObject (url) {
-				var retObj = {};
-				data = url.split("&")
-				for (var i = 0; i < data.length; i++) {
-					keyVal = data[i].split("="); // ["?user_name", "Icyfenix"]
-					//our array has a length of 2.
-					if (i == 0) {
-						keyVal[0] = keyVal[0].replace("?", "");
-					}
-					retObj[keyVal[0]] = decodeURI(keyVal[1]);
-				};
-
-				return retObj;
-			}	
-			var form_data = parseURLIntoObject(window.location.search);	
-			$('#greet_user').html(form_data.user_name + " is crunching");
-			if(typeof form_data== 'undefined'){
-			$('body').html('Please log in');
-			}
+			
+			//carry state
+			carryState(form_data, 'new_project_form');
 		</script>
 		
 	</body>

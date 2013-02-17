@@ -1,6 +1,8 @@
 var types = {
 name:"derivitive_types",
 subtypes: [
+			{name: "Please Select"
+			},
 			{name:"stock",
 			 subtypes: [
 			 			{name: "Common Stock", subtypes:[]},
@@ -12,7 +14,7 @@ subtypes: [
 							["callable", "none", "putable"],
 			 				{convertable : false},
 			 				{coupon: 0, fixed: true},
-			 				["Finite", "Perpetual"]
+			 				["Maturity", "Perpetual"]
 			 			]
 			},
 			{name:"option",

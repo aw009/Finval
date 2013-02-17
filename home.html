@@ -2,13 +2,11 @@
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+
 		<style>
 			#search_text{
 				margin-right: auto
-			}
-			
+			}			
 			body{
 				font-family: sans-serif;
 			}
@@ -21,10 +19,10 @@
 			.carousel{
 				text-align:justify;
 				display: block;					
-			}		
-			
+			}					
 			#carouselimg  {
-				height: 60%;
+				max-width: 100%;
+				height: auto;
 			}	
 		</style>
 	</head>
@@ -35,14 +33,15 @@
 		  <div class="navbar-inner">
 			<a class="brand" href="#">FinVal</a>
 			<div class="nav pull-right">
-			 <a class="btn btn-primary"  role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
-			 <a class="btn btn-success"  role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
+				<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-success"  id="account_info" role="button" href="accountinfo.html">My Account</a>			 					
 			</div>
 		  </div>
 		</div>
 		
 		<div>
-		<input type="text" data-provide="typeahead" id="derivative_type_search"><a class="btn btn-info"  role="button" id='search_text'>Search</a>
+			<input type="text" data-provide="typeahead" id="derivative_type_search"><a class="btn btn-info"  role="button" id='search_text'>Search</a>
 		</div>
 		
 		<div class="row-fluid">
@@ -63,14 +62,12 @@
 				</div>				
 				<div id="home_image_tab">
 					<div id="carousel" class="carousel">
-						<a href="javascript:nextImage('carouselimg')"><img src="carouselimg0.jpg" id="carouselimg"></img></a>
+						<!--<a href="javascript:nextImage('carouselimg')"><img src="carouselimg0.jpg" id="carouselimg"></a>-->
+						<img src="carouselimg0.jpg" id="carouselimg">
 						<h2 id="carouseltext"> Once upon a time, there was a cat.</h2>		
 					</div>
-
-		<audio id="carouselmusic" src="music.mp3"></audio>
+					<audio id="carouselmusic" src="music.mp3"></audio>
 				</div>
-
-
 			</div>
 		</div>
 		
@@ -82,10 +79,10 @@
 		  </div>
 		  <div class="modal-body">
 			<form action="myaccount.html" method="GET" id="sign_up_form">
-				<label for="user_name">User Name: </label><input name="user_name" id="user_name"><br>
-				<label for="user_email">User Email: </label><input name="user_email" id="user_email" ><br>
-				<label for="user_phone">User Phone: </label><input name="user_phone" id="user_phone" ><br>
-				<label for="user_password">User Password: </label><input name="user_password" id="user_password" >		
+				<label for="user_name">Your Name: </label><input name="user_name" id="user_name"><br>
+				<label for="user_email">Your Email: </label><input name="user_email" id="user_email" ><br>
+				<label for="user_password">Create Password: </label><input name="user_password" id="user_password" ><br>		
+				<label for="user_password">Confirm Password: </label><input name="user_password" id="user_password" >		
 			</form>
 		  </div>
 		  <div class="modal-footer">
@@ -94,7 +91,14 @@
 		  </div>
 		</div>
 		
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/carousel.js"></script>
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>
 		<script type="text/javascript">
+			//hide tabs
 			$('#how_it_works_link').click(function (e){
 				e.preventDefault();
 				$("#home_image_tab").fadeOut(50);
@@ -113,59 +117,22 @@
 				$('#how_it_works_tab').addClass('hide');
 				$('ul > li.active').removeClass('active');
 			})		
+			//carousel call carousel.js
+			var element = 'carouselimg';
 			
+			//submit user
 			var users =[];
-			<!--var button = document.getElementById("submit_user");-->
-			var button = $('#submit_user')
-			
-			<!-- console.log(button); -->		
+			var button = $('#submit_user')	
 			
 			$('#submit_user').click(function () {
 				$('#sign_up_form').submit();
 			})
-		
+			//search data array
 			var derivative_type_search=['Stock', 'Option', 'Contingent Consideration', 'Preferred', "Preferred Stock", "Common Stock", "Convertible Bond", "Bond", "Swap", "Earnout"];
 			$('#derivative_type_search').typeahead({source: derivative_type_search});
 			
-			//home carousel
-						var title = document.getElementById("carouseltext");
-			var music = document.getElementById("carouselmusic");
-			var textArray =[];
-			textArray[0] = "Once upon a time, there was a cat.";
-			textArray[1] = "Cat liked to have fun.";
-			textArray[2] = "And more fun...";
-			//https://developer.mozilla.org/en-US/docs/DOM/HTMLMediaElement
-			var imgArray = new Array();
-			imgArray[0] = new Image();
-			imgArray[0].src = 'carouselimg0.jpg';
-			imgArray[0].title = textArray[0];
-			imgArray[1] = new Image();
-			imgArray[1].src = 'carouselimg1.jpg';
-			imgArray[1].title = textArray[1];			
-			imgArray[2] = new Image();
-			imgArray[2].src = 'carouselimg2.jpg';
-			imgArray[2].title = textArray[2];
-
-			function nextImage(element){
-				var img = document.getElementById(element);
-				for(var i = 0; i < imgArray.length;i++){
-					if(imgArray[i].src == img.src){
-						if(i==0){
-							music.play();
-							}
-						if(i === imgArray.length-1){
-							document.getElementById(element).src = imgArray[0].src;
-							title.innerHTML = imgArray[0].title;
-							music.pause();
-							break;
-						}else{
-						document.getElementById(element).src = imgArray[i+1].src;
-						title.innerHTML = imgArray[i+1].title;
-						break;
-						}
-					}
-				}
-			}
+			//carry state
+			carryState(form_data, 'new_project_form');
 		</script>
 		
 	</body>

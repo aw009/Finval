@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<style>
-			#search_text{
-				margin-right: auto
-			}
-			
-			body{
-				font-family: sans-serif;
-			}
-						
-			.carousel{
-				text-align:justify;
-				display: block;				
-				text-align: center;	
-			}
-
-			#carouseltext  {
-				color: red;
-			}			
-			
-			#carouselimg  {
-				height: 200px;
-			}			
-
-		</style>
-	</head>
-
-	<body>
-		
-
-			<div id="carousel" class="carousel">
-				<h1> Cat Carousel</h1>
-				<a href="javascript:nextImage('carouselimg')"><b><img src="carouselimg0.jpg" id="carouselimg"></img></b></a>
-				<h2 id="carouseltext"> Once upon a time, there was a cat.</h2>		
-			</div>
-
-		<audio id="carouselmusic" src="music.mp3"></audio>
-
-		
-		<script type="text/javascript">			
-			//home carousel
+//home carousel
 			var title = document.getElementById("carouseltext");
 			var music = document.getElementById("carouselmusic");
 			var textArray =[];
@@ -58,7 +16,12 @@
 			imgArray[2] = new Image();
 			imgArray[2].src = 'carouselimg2.jpg';
 			imgArray[2].title = textArray[2];
+			
+			
 
+			$('#carouselimg').click(nextImage);
+			//nextImage(carouselimg);
+			
 			function nextImage(element){
 				var img = document.getElementById(element);
 				for(var i = 0; i < imgArray.length;i++){
@@ -79,8 +42,3 @@
 					}
 				}
 			}
-		</script>
-		
-	</body>
-
-</html>

@@ -1,10 +1,13 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/projects.js"></script>
 		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>
 
 	</head>
 
@@ -30,15 +33,16 @@
 		<h2> Report </h2>
 
 
-		<script> 
+		<script type="text/javascript">
+			// get project name
 			var form_data = parseURLIntoObject(window.location.search);
 			for (var i=0; i < projects.length ; i++){
 				if (projects[i].id==form_data.project_id) {
 					$('#project_name').html(projects[i].name)
 				}
 			}
-
-
+			//carry state
+			carryState(form_data, 'new_project_form');
 		</script>
 
 	</body>

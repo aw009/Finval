@@ -1,12 +1,9 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/projects.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/show_account_button.js"></script>
-
 	</head>
 
 	<body>
@@ -23,81 +20,60 @@
 		</div>
 	<!-- Body -->
 
-		<!-- <h1 id="account_info"> My Account </h1> -->
+		<h1> My Account </h1>
+		<div>
+			<table id="account_info_table" class="table">
+				<tr>
+					<th>User ID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Password</th>
+				</tr>
+			</table>			
+		<a class="btn btn-success"  role="button" href="#change_account_info_modal" data-toggle="modal">Change My Info<i class="icon-folder-open"></i></a>			
+		</div>
+		
+
 		<!-- Modal -->
-		<div id="account_info_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="change_account_info_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Account Info</h3>
+			<h3 id="myModalLabel">Change My Info</h3>
 		  </div>
 		  <div class="modal-body">
-			<form action="project.html" method="GET" id="new_project_header">
-				<label for="project_id">Project ID: </label><input name="project_id" id="project_id"><br>
-				<label for="project_name">Project Name: </label><input name="project_name" id="project_name"><br>
-				<label for="project_date">Project Date: </label><input name="project_date" id="project_date"><br>
-				<label for="project_rights">Project Rights: </label><input name="project_rights" id="project_rights"><br>						
+			<form action="myaccount.html" method="GET" id="change_account_info_form">
+				<label for="user_name">Your Name: </label><input name="user_name" id="user_name"><br>
+				<label for="user_email">Your Email: </label><input name="user_email" id="user_email"><br>
+				<label for="user_password">New Password: </label><input name="user_password" id="user_password" ><br>		
+				<label for="user_password">Confirm New Password: </label><input name="user_password" id="user_password" >		
 			</form>
 		  </div>
 		  <div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-			<button class="btn btn-primary" id="submit_project">Submit</button>
+			<button class="btn btn-primary" id="change_account_info">Change</button>
 		  </div>
-		</div>				
-		
-		<div class="tab-pane fade" id="collaboration_tab">
-		<!-- want to make this a vertical tab-->
-			<ol>
-				<li>Internal</li>
-				<li>External </li>
-				<li>Request New</li>
-			</ol>
-			<tr>
-				<td>0004</td>
-				<td>Elton John</td>
-				<td>Project Pheonix</td>
-				<td>12/31/12</td>
-			</tr>
-			<tr>
-				<td>0005</td>
-				<td>Lady Gaga</td>
-				<td>Project Dragon</td>
-				<td>12/31/2012</td>
-			</tr>						
-		</div>			
+		</div>
 			
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>
+		<script src="js/account_info.js"></script>
 
-		<script> 
-
-			var form_data = parseURLIntoObject(window.location.search);
+		<script type="text/javascript">
+			// get account info
+			account_info_data(user, "account_info_table");
 			
-			$('a:not([data-toggle])').each(function () {
-				var newURL = $(this).attr('href') + window.location.search;
-				$(this).attr('href', newURL);
+			//var users =[];
+			//var button = $('#change_account_info');
+			//change account info
+			$('#change_account_info').click(function () {
+				$('#change_account_info_form').submit();
 			});
-
-			if (form_data.user_name) {
-				var user = {
-					name : form_data.user_name,
-					email : form_data.user_email,
-					phone : form_data.user_email,
-					password : form_data.user_email,
-					id : 2
-				};
-			}
+			//carry state
+			carryState(form_data, 'new_project_form');
 			
-			if (user) {
-				//Put all your code for changing the page if the user is logged in
-				$('#log_in').hide();
-				$('#sign_up').hide();
-			
-			
-
-				$('#greet_user').html('Welcome' + form_data.user_name);
-				if (typeof form_data== 'undefined'){
-					$('body').html('Please log in');
-				}
-
 		</script>
-
 	</body>
 </html>
