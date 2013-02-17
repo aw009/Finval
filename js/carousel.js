@@ -20,9 +20,9 @@
 			
 
 			$('#carouselimg').click(nextImage);
-			//nextImage(carouselimg);
-			
+		
 			function nextImage(element){
+			element = 'carouselimg';
 				var img = document.getElementById(element);
 				for(var i = 0; i < imgArray.length;i++){
 					if(imgArray[i].src == img.src){
