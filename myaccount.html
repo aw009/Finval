@@ -22,68 +22,73 @@
 			<h1>Beautiful models <small>At your finger tips</small></h1>
 		</div>
 		<div id="greet_user"></div>	
-		
-		<ul class="nav nav-tabs">
-			<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
-			<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
-		</ul>
-		
-			<div class="tab-content" >
-				<div class="tab-pane fade" id="existing_project_tab">
-					<table id="existing_projects">
-						<tr>
-							<th>Project ID</th>
-							<th>Project Name</th>
-							<th>Project Date</th>
-							<th>Project Rights</th>
-						</tr>
-					</table>
-					<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>	
-				</div>
-			
-				<!-- Modal -->
-				<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h3 id="myModalLabel">New Project</h3>
-				  </div>		
-				  <div class="modal-body">
-					<form action="newproject.html" method="GET" id="new_project_form">
-						<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
-						<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
-						<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>												
-					</form>
-				  </div>				  
-				  <div class="modal-footer">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-					<button class="btn btn-primary" id="submit_new_project">Submit</button>
-				  </div>
-				</div>				
+
+		<div class="row-fluid">
+			<div class="span10 offset2">		
+				<ul class="nav nav-tabs">
+					<li><a href="#existing_project_tab" id="existing_project_link" data-toggle="tab">My Projects <i class="icon-folder-close"></i></a></li>
+					<li><a href="#collaboration_tab" id="collaboration_link" data-toggle="tab">Collaboration <i class="icon-heart"></i></a></li>
+				</ul>
 				
-				<div class="tab-pane fade" id="collaboration_tab">
-				<!-- want to make this a vertical tab-->
-					<table id="collaboration">
-						<tr>
-							<th>InternalProject</th>
-							<th>ExternalProject</th>
-							<th>Request New</th>
-						</tr>
-				
-						<tr>
-							<td>0004</td>
-							<td>Elton John</td>
-							<td>Project Pheonix</td>
-							<td>12/31/12</td>
-						</tr>
-						<tr>
-							<td>0005</td>
-							<td>Lady Gaga</td>
-							<td>Project Dragon</td>
-							<td>12/31/2012</td>
-						</tr>						
-					</table>			
-				</div>			
-			</div>			
+					<div class="tab-content" >
+						<div class="tab-pane active" id="existing_project_tab">
+							<table id="existing_projects">
+								<tr>
+									<th>Project ID</th>
+									<th>Project Name</th>
+									<th>Project Date</th>
+									<th>Project Rights</th>
+								</tr>
+							</table>
+							<a class="btn btn-success"  role="button" href="#new_project_modal" data-toggle="modal">Create New project<i class="icon-folder-open"></i></a>	
+						</div>
+		
+						<!-- Modal -->
+						<div id="new_project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">New Project</h3>
+						  </div>		
+						  <div class="modal-body">
+							<form action="newproject.html" method="GET" id="new_project_form">
+								<label for="new_project_name">Project Name: </label><input name="new_project_name" id="new_project_name"><br>
+								<label for="new_project_date">Project Date: </label><input name="new_project_date" id="new_project_date"><br>
+								<label for="new_project_rights">Project Rights: </label><input name="new_project_rights" id="new_project_rights"><br>												
+							</form>
+						  </div>				  
+						  <div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+							<button class="btn btn-primary" id="submit_new_project">Submit</button>
+						  </div>
+						</div>				
+						
+						<div class="tab-pane" id="collaboration_tab">
+						<!-- want to make this a vertical tab-->
+							<table id="collaboration">
+								<tr>
+									<th>InternalProject</th>
+									<th>ExternalProject</th>
+									<th>Request New</th>
+								</tr>
+						
+								<tr>
+									<td>0004</td>
+									<td>Elton John</td>
+									<td>Project Pheonix</td>
+									<td>12/31/12</td>
+								</tr>
+								<tr>
+									<td>0005</td>
+									<td>Lady Gaga</td>
+									<td>Project Dragon</td>
+									<td>12/31/2012</td>
+								</tr>						
+							</table>			
+						</div>			
+					</div>
+			</div>
+		</div>				
+		
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/projects.js"></script>

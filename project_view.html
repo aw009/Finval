@@ -2,12 +2,6 @@
 <html>
 	<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/projects.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/show_account_button.js"></script>
 
 	</head>
 
@@ -27,13 +21,61 @@
 
 		<h1 id="project_name">  </h1>
 
-		<h2> Summary </h2>
-		<h2> Input </h2>
-		<h2> Model </h2>
-		<h2> Report </h2>
-
-
+		<div class="row-fluid">
+			<div class="span10 offset2">
+				<ul class="nav nav-tabs">
+					<li class="pull-left"><a href="#project_summary_tab" id="project_summary_link" data-toggle="tab">Summary <i class="icon-leaf"></i></a></li>
+					<li class="pull-left"><a href="#project_input_tab" id="project_input_link" data-toggle="tab">Input <i class="icon-pencil"></i></a></li>
+					<li class="pull-left"><a href="#project_model_tab" id="project_model_link" data-toggle="tab">Model <i class="icon-fire"></i></a></li>
+					<li class="pull-left"><a href="#project_report_tab" id="project_report_link" data-toggle="tab">Report <i class="icon-book"></i></a></li>
+				</ul>
+				<div class="tab-content row-fluid" >
+					<div class="tab-pane active" id="project_summary_tab">
+						<div id="project_summary" class="project_summary">
+						<h2 id="project_summary_text"> Summary </h2>		
+						</div>
+					</div>
+					<div class="tab-pane" id="project_input_tab">
+						<div id="project_input" class="project_input">
+						<h2 id="project_input_text"> Input </h2>		
+						</div>
+					</div>
+					<div class="tab-pane" id="project_model_tab">
+						<div id="project_model" class="project_model">
+						<h2 id="proproject_model_text"> Model </h2>		
+						</div>
+					</div>
+					<div class="tab-pane" id="project_report_tab">
+						<div id="project_report" class="project_report">
+						<h2 id="project_report_text"> Report </h2>		
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/projects.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/show_account_button.js"></script>
 		<script type="text/javascript">
+			//hide tabs
+			$('#project_summary_link').click(function (e){
+				e.preventDefault();
+				$("#project_summary_tab").tab('show');
+			})
+			$('#project_input_link').click(function (e){
+				e.preventDefault();
+				$("#project_input_tab").tab('show');
+			})
+			$('#project_model_link').click(function (e){
+				e.preventDefault();
+				$("#project_model_tab").tab('show');
+			})
+			$('#project_report_link').click(function (e){
+				e.preventDefault();
+				$("#project_report_tab").tab('show');
+			})			
 			// get project name
 			var form_data = parseURLIntoObject(window.location.search);
 			for (var i=0; i < projects.length ; i++){

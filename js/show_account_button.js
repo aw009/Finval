@@ -19,7 +19,7 @@
 				$('#log_in').hide();
 				$('#sign_up').hide();
 			
-				$('#greet_user').html('Welcome ' + form_data.user_name);
+				$('#greet_user').html('This is for the one and only ' + form_data.user_name +'!');
 				if (typeof form_data== 'undefined'){
 					$('body').html('Please log in');
 				}	

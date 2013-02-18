@@ -2,27 +2,20 @@
 			var title = document.getElementById("carouseltext");
 			var music = document.getElementById("carouselmusic");
 			var textArray =[];
+			//var arraySize = 3;
 			textArray[0] = "Once upon a time, there was a cat.";
 			textArray[1] = "Cat liked to have fun.";
 			textArray[2] = "And more fun...";
 			//https://developer.mozilla.org/en-US/docs/DOM/HTMLMediaElement
-			var imgArray = new Array();
-			imgArray[0] = new Image();
-			imgArray[0].src = 'carouselimg0.jpg';
-			imgArray[0].title = textArray[0];
-			imgArray[1] = new Image();
-			imgArray[1].src = 'carouselimg1.jpg';
-			imgArray[1].title = textArray[1];			
-			imgArray[2] = new Image();
-			imgArray[2].src = 'carouselimg2.jpg';
-			imgArray[2].title = textArray[2];
-			
-			
+			var imgArray = new Array();			
+			for (i=0;i<textArray.length; i++){
+				imgArray[i] = new Image();
+				imgArray[i].src = 'carouselimg'+i+'.jpg';
+				imgArray[i].title = textArray[i];				
+			}
 
 			$('#carouselimg').click(nextImage);
-		
-			function nextImage(element){
-			element = 'carouselimg';
+			function nextImage(){
 				var img = document.getElementById(element);
 				for(var i = 0; i < imgArray.length;i++){
 					if(imgArray[i].src == img.src){
@@ -30,14 +23,14 @@
 							music.play();
 							}
 						if(i === imgArray.length-1){
-							document.getElementById(element).src = imgArray[0].src;
+							img.src = imgArray[0].src;
 							title.innerHTML = imgArray[0].title;
 							music.pause();
 							break;
 						}else{
-						document.getElementById(element).src = imgArray[i+1].src;
-						title.innerHTML = imgArray[i+1].title;
-						break;
+							img.src = imgArray[i+1].src;
+							title.innerHTML = imgArray[i+1].title;
+							break;
 						}
 					}
 				}

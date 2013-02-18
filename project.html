@@ -10,7 +10,7 @@
 		
 		<div class="navbar">
 		 	<div class="navbar-inner">
-				<a class="brand" href="#">FinVal</a>
+				<a class="brand" href="home.html">FinVal</a>
 				<div class="nav pull-right">
 				<a class="btn btn-primary"  id="log_in" role="button" href="#log_in_modal" data-toggle="modal">Log In</a>
 				<a class="btn btn-success"  id="sign_up" role="button" href="#sign_up_modal" data-toggle="modal">Sign Up</a>
@@ -24,50 +24,54 @@
 		<div class="page-header">
 		<h1>Project <small>In working</small></h1>
 		</div>
+
+		<div class="row-fluid">
+			<div class="span10 offset2">		
+				<ul class="nav nav-tabs">
+					<li><a href="#method_1_tab" id="method_1_link" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
+					<li><a href="#method_2_tab" id="method_2_link" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
+					<li><a href="#method_3_tab" id="method_3_link" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
+				</ul>
 				
-		<ul class="nav nav-tabs">
-			<li><a href="#method_1_tab" id="method_1_link" data-toggle="tab">Probability Based <i class="icon-folder-close"></i></a></li>
-			<li><a href="#method_2_tab" id="method_2_link" data-toggle="tab">Option Based <i class="icon-folder-open"></i></a></li>
-			<li><a href="#method_3_tab" id="method_3_link" data-toggle="tab">Simulation Based <i class="icon-heart"></i></a></li>
-		</ul>
-		
-			<div class="tab-content row-fluid" >
-				<div class="tab-pane fade hide" id="method_1_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8 table-bordered table-hover">
-						<tr>
-							<th class="span2 pagination-centered">Inputs</th>
-							<th class="span2">Calculations</th>
-							<th class="span2">Results</th>
-							<th class="span2">Notes</th>
-						</tr>
-					</table>				
-				</div>
-			
-				<div class="tab-pane fade hide" id="method_2_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8">
-						<tr>
-							<th>Inputs</th>
-							<th>Calculations</th>
-							<th>Results</th>
-							<th>Notes</th>
-						</tr>
-					</table>				
-				</div>
+				<div class="tab-content row-fluid" >
+					<div class="tab-pane active" id="method_1_tab">
+					<!-- want to make these tabs -->
+						<table class="table span8 table-bordered table-hover">
+							<tr>
+								<th class="span2 pagination-centered">Inputs</th>
+								<th class="span2">Calculations</th>
+								<th class="span2">Results</th>
+								<th class="span2">Notes</th>
+							</tr>
+						</table>				
+					</div>
 				
-				<div class="tab-pane fade hide" id="method_3_tab">
-				<!-- want to make these tabs -->
-					<table class="table span8">
-						<tr>
-							<th>Inputs</th>
-							<th>Calculations</th>
-							<th>Results</th>
-							<th>Notes</th>
-						</tr>
-					</table>
-				</div>			
-			</div>			
+					<div class="tab-pane" id="method_2_tab">
+					<!-- want to make these tabs -->
+						<table class="table span8">
+							<tr>
+								<th>Inputs</th>
+								<th>Calculations</th>
+								<th>Results</th>
+								<th>Notes</th>
+							</tr>
+						</table>				
+					</div>
+					
+					<div class="tab-pane" id="method_3_tab">
+					<!-- want to make these tabs -->
+						<table class="table span8">
+							<tr>
+								<th>Inputs</th>
+								<th>Calculations</th>
+								<th>Results</th>
+								<th>Notes</th>
+							</tr>
+						</table>
+					</div>			
+				</div>	
+			</div>
+		</div>				
 		<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
